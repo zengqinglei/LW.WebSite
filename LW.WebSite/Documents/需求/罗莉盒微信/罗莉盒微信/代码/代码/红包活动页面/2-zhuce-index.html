@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/custom.js"></script>
+<style>
+*{ margin:0; padding:0; border:0; font-family:"Heiti SC Light" ; font-size:18px;}
+li{ list-style:none;}
+a{ text-decoration:none; color:black;}
+img{ border:none 0; display:block;}
+a:hover{ color:red;}
+body{ margin:0; padding:0; background: url(images/1-dengluyemian%EF%BC%8Dbg.png); }
+.logo{ width:446px; height:100px; background:url(images/1-dengluyemian%EF%BC%8Dlogo.png);  margin:auto;margin-top:92px;}
+.denglulogo{ margin:auto;margin-top:91px; font-size:36px; width:511px; position:relative; margin-bottom:13px;}
+.denglulogo .zhuce{ display:block;padding-bottom:3px; border-bottom:1px solid #999; width:175px; position:absolute; right:0; bottom:-18px; text-align:center;}
+
+.mima,.youxiang{ display:block; width:494px; height:69px; background:url(images/2-zhuce-shuru.png) no-repeat; color: #999; font-size:30px; margin:auto; margin-top:13px; padding-left:15px;}
+.youxiang{ margin-top:30px;}
+.yanzhengbox{ width:507px; height:69px; margin:auto;margin-top:13px;}
+.yanzhengma{ width:202px; height:69px; background:url(images/2-zhuce-ma.png);color: #999; font-size:30px;  padding-left:19px; float:left;}
+.yanzhengbox img{ float:left; margin-left:17px;}
+.yanzhengbox a{ float:left; margin-left:14px; margin-top:41px; font-size:24px;}
+.denglubutton{ display:block;width:507px; height:72px; background:url(images/2-zhuce-anniu.png); margin:auto; margin-top:27px;}
+/*.zhucelink{ display:block; margin-left:68px; margin-top:22px; padding-bottom:3px; border-bottom:1px solid #999; width:260px;}
+*/
+.comlink{ position: absolute; right:18px; bottom:18px; }
+
+@media (max-width: 750px) { 
+    header nav li a {font-size: 11px;padding: 0 10px}
+    .col, .cols li {width: 100%;max-width: 100%;float: none;margin: 0 0 30px !important;}
+    .cols li {max-width: 100%;}
+	.cols li.middle {margin: 0 0;}
+
+}
+
+@media (max-width: 580px) { 
+.logo{ margin-left:5%;}
+.denglulogo{ margin-left:5%; }
+.mima,.youxiang{ margin-left:5%; padding-left:4%;}
+.yanzhengbox{ margin-left:5%; }
+
+.denglubutton{ margin-left:5%; }
+.zhucelink{margin-left:5%;}
+
+}
+</style>
+<meta charset="UTF-8">
+<title>萝莉盒</title>
+</head>
+
+<body>
+<div class="logo"></div>
+<div class="denglulogo">注册<a href="3-xinren.html" class="zhuce">注册即送新人专享礼</a></div>
+<input class="youxiang"  value="请输入您的邮箱">
+<input class="mima"  value="请输入您的密码">
+<div class="yanzhengbox">
+  <input class="yanzhengma" value="请输入验证码">
+  <img src="images/2-zhuce-yanzheng.png">
+  <a href="#">刷新</a>
+</div>
+<a href="#" class="denglubutton" ><input type="button" ></a>
+<!--<a href="#" class="zhucelink">没有萝莉盒账号？10秒免费注册</a>-->
+<a href="#" class="comlink">LOLITABOX.COM</a>
+</body>
+</html>
