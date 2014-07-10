@@ -1,0 +1,25 @@
+﻿@model LW.ViewModels.VM_Base
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="@Model.Keywords" />
+    <meta name="description" content="@Model.Description" />
+    <title>@Model.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/bootstrap", "~/Content/css", "~/Content/jquery-easyui/themes/default/easyui", "~/Content/jquery-easyui/themes/icon")
+    @RenderSection("Styles", false)
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/jquery-easyui", "~/bundles/admin/common")
+    @RenderSection("Scripts", false)
+</head>
+<body>
+    <header></header>
+    <div id="body">
+        @RenderBody()
+    </div>
+    <footer></footer>
+</body>
+</html>

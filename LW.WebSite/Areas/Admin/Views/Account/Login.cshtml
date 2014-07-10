@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "管理员登录";
+}
+
+<div class="dialog-account-login">
+    @using (Html.BeginForm("login", "account", new { backurl = Request["backurl"] }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td class="editor-label">帐　号：</td>
+                <td class="editor-field"><input class="input text-account" name="Account" type="text" /></td>
+            </tr>
+            <tr>
+                <td class="editor-label">密　码：</td>
+                <td class="editor-field"><input class="input text-password" name="Password" type="password" /></td>
+            </tr>
+            <tr>
+                <td class="editor-label">验证码：</td>
+                <td class="editor-field">
+                    <input class="input text-validcode" name="ValidCode" type="text" />
+                    <img class="img-validcode" alt="验证码" />
+                    <a class="a-refreshvalidcode" href="javascript:void(0);">看不清？换一张</a>
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+@section Styles{
+    @Styles.Render("~/Content/admin/account-login")
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/admin/account-login")
+}

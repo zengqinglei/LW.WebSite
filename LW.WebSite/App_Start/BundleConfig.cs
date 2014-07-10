@@ -8,36 +8,39 @@ namespace LW.WebSite
         // 有关 Bundling 的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            #region 绑定脚本
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            // 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好
-            // 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                        "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery-easyui").Include(
+                        "~/Scripts/jquery-easyui/locale/easyui-lang-zh_CN.js",
+                        "~/Scripts/jquery-easyui/jquery.easyui.js",
+                        "~/Scripts/jquery-easyui/jquery.easyui-ext.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/common").Include(
+                        "~/Scripts/Admin/common.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/account-login").Include(
+                        "~/Scripts/Admin/account.login.js"));
+            #endregion
 
+            #region 绑定样式
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/default/easyui").Include(
+                        "~/Content/jquery-easyui/themes/default/easyui.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/icon").Include(
+                        "~/Content/jquery-easyui/themes/icon.css",
+                        "~/Content/jquery-easyui/themes/icon-ext.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/account-login").Include("~/Content/admin/account.login.css"));
+            #endregion
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
