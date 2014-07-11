@@ -1,5 +1,55 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "罗莉盒微信--后台管理系统";
 }
+<div class="easyui-layout layout-home-index" data-options="fit: true">
+    <div data-options="region:'north', border:false" style="height: 55px;">
+        <div class="header">
+            <div class="logo">
+                <h3>罗莉盒微信--后台管理系统</h3>
+            </div>
+            <div class="user">
+                您好，@HttpContext.Current.User.Identity.Name
+                <a class="a-resetpw" href="javascript:void(0);">修改密码</a> | <a class="a-logout" href="javascript:void(0);">安全退出</a>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'west', split:'true', title:' 导航菜单'" style="width:200px;">
+        <div class="nav-list"></div>
+    </div>
+    <div data-options="region:'center', border:'true'">
+        <div class="tab-list"></div>
+        <div class="tab-menu easyui-menu" style="width: 150px; "></div>
+    </div>
+    <div data-options="region:'south', border:false" style="height:55px;">
+        <div class="footer">
+            <h3>罗莉盒微信有限公司系统-版权所有 2013-2015</h3>
+        </div>
+    </div>
+    <div class="dialog-resetpw" style="display: none;">
+        @using (Html.BeginForm("changepassword", "account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td class="editor-label"><label>原 密 码：</label></td>
+                    <td class="editor-field"><input name="OldPassword" type="password" maxlength="16" /></td>
+                </tr>
+                <tr>
+                    <td class="editor-label"><label>新 密 码：</label></td>
+                    <td class="editor-field"><input name="NewPassword" type="password" maxlength="16" /></td>
+                </tr>
+                <tr>
+                    <td class="editor-label"><label>确认密码：</label></td>
+                    <td class="editor-field"><input name="ConfirmPassword" type="password" maxlength="16" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
 
-<h2>Index</h2>
+@section Styles{
+    @Styles.Render("~/Content/admin/home-index")
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/admin/home-index")
+}

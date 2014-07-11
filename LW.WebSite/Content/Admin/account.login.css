@@ -10,25 +10,23 @@
 .dialog-account-login .editor-label {
 }
 .dialog-account-login .editor-field * {
-    vertical-align:middle;
+    height:22px;
+    display: inline-block;
+    vertical-align: middle;
 }
 .dialog-account-login .editor-field .text-account, .text-password {
+    padding-left:3px;
+    padding-right:3px;
     width: 250px;
 }
 
 .dialog-account-login .editor-field .text-validcode {
+    padding-left:3px;
+    padding-right:3px;
     width: 100px;
-}
-
-.dialog-account-login .editor-field .img-validcode {
-    height: 22px;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .dialog-account-login .editor-field .a-refreshvalidcode {
     height: 20px;
     line-height: 20px;
-    display: inline-block;
-    vertical-align: middle;
 }

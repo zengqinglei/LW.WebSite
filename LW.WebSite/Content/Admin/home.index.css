@@ -1,0 +1,76 @@
+﻿.layout-home-index .header {
+    margin-bottom: 5px;
+    height: 49px;
+    color: #0E2D5F;
+    font-family: "微软雅黑";
+    background-color:#E0ECFF;
+    border-bottom: 1px solid #95B8E7;
+}
+.layout-home-index h3 {
+    padding:10px;
+    font-size:18px;
+    font-family:楷体;
+}
+.layout-home-index .header .logo {
+    float: left;
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.layout-home-index .header .user {
+    float: right;
+    margin: 5px 10px;
+    text-align: right;
+}
+
+.layout-home-index .nav-list .nav-child {
+    padding: 5px 0;
+}
+
+.layout-home-index .nav-list .tree-node {
+    margin: 2px 15px;
+    padding: 4px 0;
+}
+
+.layout-home-index .nav-list .tree-node-selected {
+    border: 1px solid #CC9933;
+}
+.layout-home-index .nav-list .tree-title { 
+    padding-left: 5px; 
+}
+.layout-home-index .tab-container { 
+    padding: 5px; 
+}
+.layout-home-index .footer {
+    margin-top: 5px;
+    height: 49px;
+    text-align: center;
+    color: #0E2D5F;
+    font-family: "微软雅黑";
+    background-color: #fbfbfb;
+    border-top: 1px solid #D4D4D4;
+}
+
+.dialog-resetpw table {
+    margin: 20px;
+}
+
+    .dialog-resetpw table tr {
+        height: 40px;
+    }
+
+.dialog-resetpw .editor-label {
+}
+
+.dialog-resetpw .editor-field * {
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dialog-resetpw .editor-field input {
+    padding-left: 3px;
+    padding-right: 3px;
+    width: 250px;
+}

@@ -11,6 +11,8 @@
     <AssemblyName>LW.EFEntity</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +32,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.Entity.EF6.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.EF6.6.8.3\lib\net45\MySql.Data.Entity.EF5.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.EF6.6.8.3\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,13 +60,313 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="activity_benefit.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="activity_okgirl_profile.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="activity_okgirl_surveystat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="activity_okgirl_votestat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="activity_spread.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="api_access_log.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="area.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="article.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_detail.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_order_set.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_products.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_products_cname.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_project.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_project_list.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="box_project_relation.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="category.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="club_benefit_flawless.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="club_benefit_votestat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="club_prize.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="club_users.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coupon.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edm_index.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edm_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="edm_stat_ymd.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="email_blacklist.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fee_product.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="filterword.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="follow.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="giftcard.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_in.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_item.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_out.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_virtual_relation.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ip_blacklist.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="jump_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="member.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="member_order.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="msg.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="msg_data.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MySql.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySql.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MySql.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MySql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MySql.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="products.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_brand.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_buy_channel.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_evaluate.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_evaluate_img.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_evaluate_reply.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_evaluate_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_package.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_pic.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_survey.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_survey_answer.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_survey_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="products_tryout_info.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="product_effect_relation.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="promotion.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="send_log.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="send_task.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="share_task.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="shop.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="shop_info.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stat_user_order.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="system_config.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tag_index.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tag_relation.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_child.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_order_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="task_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="telphone.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_access.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_admin.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_group.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_node.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_role.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="think_simplelog.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tryout_stat.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="url_click.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users_invite.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_activity.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_address.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_atme.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_behaviour_relation.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="user_behaviour_trace.cs">
+      <DependentUpon>MySql.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Configs\" />
-    <Folder Include="Models\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="MySql.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MySql.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MySql.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MySql.edmx</DependentUpon>
+      <LastGenOutput>MySql.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MySql.edmx.diagram">
+      <DependentUpon>MySql.edmx</DependentUpon>
+    </None>
+    <None Include="MySql.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MySql.edmx</DependentUpon>
+      <LastGenOutput>MySql.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

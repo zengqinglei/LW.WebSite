@@ -11,3 +11,13 @@ namespace LW.WebSite
         }
     }
 }
+namespace LW.AdminSite
+{
+    public class FilterConfig
+    {
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new LW.AdminSite.Filters.ExceptionFilter());
+        }
+    }
+}

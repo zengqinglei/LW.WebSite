@@ -1,0 +1,4 @@
+adminurl:http://www.lolitabox.com/dbadmin/
+server:42.121.84.129
+username:lolitabox_baby
+password:baby121314

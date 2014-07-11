@@ -26,18 +26,30 @@ namespace LW.WebSite
                         "~/Scripts/Admin/common.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/account-login").Include(
                         "~/Scripts/Admin/account.login.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/home-index").Include(
+                        "~/Scripts/Admin/home.index.js"));
             #endregion
 
             #region 绑定样式
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Content/Admin/site.css"));
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/black/easyui").Include(
+                        "~/Content/jquery-easyui/themes/black/easyui.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/bootstrap/easyui").Include(
+                        "~/Content/jquery-easyui/themes/bootstrap/easyui.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/default/easyui").Include(
                         "~/Content/jquery-easyui/themes/default/easyui.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/gray/easyui").Include(
+                        "~/Content/jquery-easyui/themes/gray/easyui.css"));
+            bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/metro/easyui").Include(
+                        "~/Content/jquery-easyui/themes/metro/easyui.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/icon").Include(
                         "~/Content/jquery-easyui/themes/icon.css",
                         "~/Content/jquery-easyui/themes/icon-ext.css"));
             bundles.Add(new StyleBundle("~/Content/admin/account-login").Include("~/Content/admin/account.login.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/home-index").Include("~/Content/admin/home.index.css"));
             #endregion
 
             BundleTable.EnableOptimizations = false;

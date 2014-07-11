@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "管理员登录";
+    ViewBag.Title = "罗莉盒微信--管理员登录";
 }
 
 <div class="dialog-account-login">
@@ -8,17 +8,17 @@
         @Html.AntiForgeryToken()
         <table cellpadding="0" cellspacing="0" border="0">
             <tr>
-                <td class="editor-label">帐　号：</td>
-                <td class="editor-field"><input class="input text-account" name="Account" type="text" /></td>
+                <td class="editor-label"><label>帐　号：</label></td>
+                <td class="editor-field"><input class="input text-account" name="Account" type="text" maxlength="20" /></td>
             </tr>
             <tr>
-                <td class="editor-label">密　码：</td>
-                <td class="editor-field"><input class="input text-password" name="Password" type="password" /></td>
+                <td class="editor-label"><label>密　码：</label></td>
+                <td class="editor-field"><input class="input text-password" name="Password" type="password" maxlength="16" /></td>
             </tr>
             <tr>
-                <td class="editor-label">验证码：</td>
+                <td class="editor-label"><label>验证码：</label></td>
                 <td class="editor-field">
-                    <input class="input text-validcode" name="ValidCode" type="text" />
+                    <input class="input text-validcode" name="ValidCode" type="text" maxlength="4" />
                     <img class="img-validcode" alt="验证码" />
                     <a class="a-refreshvalidcode" href="javascript:void(0);">看不清？换一张</a>
                 </td>

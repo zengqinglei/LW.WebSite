@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 #region 命名空间
 using System.Web.Mvc;
 using LW.ViewModels;
+using LW.Utility;
+using LW.Business;
+using System.Web.Security;
+using LW.Controllers.AdminSite.Filters;
 #endregion
 
 namespace LW.Controllers.AdminSite
@@ -20,9 +24,41 @@ namespace LW.Controllers.AdminSite
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string userName, string password)
+        public ActionResult Login(VM_MLogin vm_MLogin)
         {
-            return RedirectToAction("Index", "Home");
+            #region 数据验证
+            if (!string.Equals(B_Service.GetValidCode(), vm_MLogin.ValidCode, StringComparison.OrdinalIgnoreCase))
+            {
+                return Json(new Result("验证码错误！"));
+            }
+            if (ConfigHelper.GetValue("AdminAccount") != vm_MLogin.Account || ConfigHelper.GetValue("AdminPassword") != EDHelper.MD5Encrypt(vm_MLogin.Password))
+            {
+                return Json(new Result("账户或密码错误！"));
+            }
+            #endregion
+
+
+            FormsAuthentication.SetAuthCookie(vm_MLogin.Account, false);
+
+            var result = new Result();
+            if (Request["isAjax"] != "true")
+            {
+                result.data = Request["backurl"] ?? "/admin";
+            }
+            result.status = 1;
+            result.msg = "登录成功！";
+
+            return Json(result, "text/html");
+        }
+        #endregion
+
+        #region 账户管理--登出
+        [HttpGet]
+        [FormsAuthorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
         }
         #endregion
     }

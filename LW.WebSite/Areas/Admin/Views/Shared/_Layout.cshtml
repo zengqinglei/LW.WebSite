@@ -10,16 +10,12 @@
     <meta name="description" content="@Model.Description" />
     <title>@Model.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    @Styles.Render("~/Content/bootstrap", "~/Content/css", "~/Content/jquery-easyui/themes/default/easyui", "~/Content/jquery-easyui/themes/icon")
+    @Styles.Render("~/Content/admin/css", "~/Content/jquery-easyui/themes/default/easyui", "~/Content/jquery-easyui/themes/icon")
     @RenderSection("Styles", false)
-    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/jquery-easyui", "~/bundles/admin/common")
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jquery-easyui", "~/bundles/admin/common")
     @RenderSection("Scripts", false)
 </head>
 <body>
-    <header></header>
-    <div id="body">
-        @RenderBody()
-    </div>
-    <footer></footer>
+    @RenderBody()
 </body>
 </html>

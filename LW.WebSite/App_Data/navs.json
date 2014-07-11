@@ -1,0 +1,18 @@
+﻿[
+    {
+        "text": "客服作业",
+        "state": true,
+        "_checked": true,
+        "iconCls": "icon-01-00",
+        "children": [
+            {
+                "text": "维修登记",
+                "isRefresh": true,
+                "iconCls": "icon-01-01",
+                "attributes": {
+                    "url": "/admin/maintain/report"
+                }
+            }
+        ]
+    }
+]

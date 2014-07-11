@@ -45,13 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminSite\AccountController.cs" />
+    <Compile Include="AdminSite\Filters\ExceptionFilter.cs" />
+    <Compile Include="AdminSite\Filters\FormsAuthorizeAttribute.cs" />
     <Compile Include="AdminSite\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceController.cs" />
     <Compile Include="WebSite\AccountController.cs" />
     <Compile Include="WebSite\HomeController.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LW.Business\LW.Business.csproj">
       <Project>{2687c32a-f407-4d31-bfb5-2260974ed034}</Project>

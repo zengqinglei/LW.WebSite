@@ -42,7 +42,11 @@ $(function () {
                     validType: 'length[6,12]',
                     invalidMessage: '格式有误，请输入6~12位字符'
                 });
-                self.controls.txtValidCode.validatebox({
+                self.controls.txtValidCode.focus(function () {
+                    self.controls.txtValidCode.validatebox("disableValidation");
+                }).blur(function () {
+                    self.controls.txtValidCode.validatebox("enableValidation");
+                }).validatebox({
                     required: true,
                     missingMessage: '请输入4位验证码',
                     validType: 'length[4,4]',
@@ -66,16 +70,16 @@ $(function () {
         self.controls.loginForm.form('enableValidation').form('submit', {
             success: function (data) {
                 var json = jQuery.parseJSON(data);
-                if (json.Status == 1) {
-                    if (json.Data) {
-                        window.location = json.Data;
+                if (json.status == 1) {
+                    if (json.data) {
+                        window.location = json.data;
                     } else {
-                        showMsg({ msg: json.Msg, icon: "success" });
+                        showMsg({ msg: json.msg, icon: "success" });
                     }
                     self.controls.loginDialog.dialog('close');
                 } else {
                     self.refreshValidCode();
-                    showMsg({ msg: json.Msg, icon: "error" });
+                    showMsg({ msg: json.msg, icon: "error" });
                 }
             }
         });
