@@ -3,17 +3,18 @@
 $(function () {
     function Page(selector) {
         this.selector = selector;
+
         this.controls = {
-            aResetPW: $(selector + " .a-resetpw"),
-            aLogout: $(selector + ' .a-logout'),
-            navs: $(selector + ' .nav-list'),
-            tabs: $(selector + ' .tab-list'),
+            btnResetpw: $(".layout-" + selector + " .a-resetpw"),
+            btnLogout: $(".layout-" + selector + ' .a-logout'),
+            navList: $(".layout-" + selector + ' .nav-list'),
+            tabList: $(".layout-" + selector + ' .tab-list'),
             tabMenu: $('.tab-menu'),
-            dialogResetPW: $('.dialog-resetpw'),
-            formResetPW: $('.dialog-resetpw form'),
-            txtOldPassword: $('.dialog-resetpw [name="OldPassword"]'),
-            txtNewPassword: $('.dialog-resetpw [name="NewPassword"]'),
-            txtConfirmPassword: $('.dialog-resetpw [name="ConfirmPassword"]')
+            dlgResetpw: $('.dialog-resetpw'),
+            frmResetpw: $('.dialog-resetpw form'),
+            frmResetpw_txtOldpassword: $('.dialog-resetpw [name="OldPassword"]'),
+            frmResetpw_txtNewpassword: $('.dialog-resetpw [name="NewPassword"]'),
+            frmResetpw_txtConfirmpassword: $('.dialog-resetpw [name="ConfirmPassword"]')
         }
 
         this.init();
@@ -21,14 +22,14 @@ $(function () {
     Page.prototype.init = function () {
         var self = this;
 
-        self.controls.aResetPW.click(function () { self.initResetPW(); });
-        self.controls.aLogout.click(function () { self.onLogout(); });
-        self.initNavs();
+        self.controls.btnResetpw.click(function () { self.initResetpw(); });
+        self.controls.btnLogout.click(function () { self.onLogout(); });
+        self.initNavList();
     }
-    Page.prototype.initResetPW = function () {
+    Page.prototype.initResetpw = function () {
         var self = this;
 
-        self.controls.dialogResetPW.show().dialog({
+        self.controls.dlgResetpw.show().dialog({
             title: '管理员密码修改',
             width: 400,
             modal: true,
@@ -40,27 +41,27 @@ $(function () {
             }, {
                 text: "取消",
                 iconCls: "icon-cancel",
-                handler: function () { self.controls.dialogResetPW.dialog("close"); }
+                handler: function () { self.controls.dlgResetpw.dialog("close"); }
             }],
             onOpen: function () {
-                self.controls.txtOldPassword.validatebox({
+                self.controls.frmResetpw_txtOldpassword.validatebox({
                     required: true,
                     missingMessage: '请输入旧密码'
                 });
-                self.controls.txtNewPassword.validatebox({
+                self.controls.frmResetpw_txtNewpassword.validatebox({
                     required: true,
                     missingMessage: '请输入新密码'
                 });
-                self.controls.txtConfirmPassword.validatebox({
+                self.controls.frmResetpw_txtConfirmpassword.validatebox({
                     required: true,
                     missingMessage: '请再次输入新密码',
-                    validType: "equals['" + self.controls.txtNewPassword.selector + "']",
+                    validType: "equals['" + self.controls.frmResetpw_txtNewpassword.selector + "']",
                     invalidMessage: '两次新密码输入不一致'
                 });
-                self.controls.formResetPW.form("disableValidation");
+                self.controls.frmResetpw.form("disableValidation");
             },
             onClose: function () {
-                self.controls.formResetPW.form("reset").form("disableValidation");
+                self.controls.frmResetpw.form("reset").form("disableValidation");
             }
         });
     }
@@ -68,37 +69,36 @@ $(function () {
         var self = this;
 
         $.messager.confirm("系统提示！", "您确定要退出本次登录吗？", function (r) {
-            if (r) {
-                location.href = "/admin/account/logout";
-            }
+            if (!r) return false;
+            location.href = "/admin/account/logout";
         });
     }
     Page.prototype.onResetPW = function () {
         var self = this;
 
-        self.controls.formResetPW.form("enableValidation").form('submit', {
+        self.controls.frmResetpw.form("enableValidation").form('submit', {
             success: function (data) {
                 var json = jQuery.parseJSON(data);
-                if (json.Status == 1) {
-                    showMsg({ msg: json.Msg, icon: "success" });
-                    self.controls.dialogResetPW.dialog('close');
+                if (json.status == 1) {
+                    showMsg({ msg: json.msg, icon: "success" });
+                    self.controls.dlgResetpw.dialog('close');
                 } else {
-                    showMsg({ msg: json.Msg, icon: "error" });
+                    showMsg({ msg: json.msg, icon: "error" });
                 }
             }
         });
     }
-    Page.prototype.initNavs = function () {
+    Page.prototype.initNavList = function () {
         var self = this;
 
-        self.initTabs();
+        self.initTabList();
         $.post('/admin/home/getnavs', {}, function (data) {
-            self.controls.navs.accordion({
+            self.controls.navList.accordion({
                 fit: true,
                 border: false
             });
             $(data).each(function (index, item) {
-                self.controls.navs.accordion("add", {
+                self.controls.navList.accordion("add", {
                     title: item.text,
                     iconCls: item.iconCls,
                     selected: index == 0,
@@ -114,20 +114,20 @@ $(function () {
             });
         }, 'json').fail(LW.ajaxError);
     }
-    Page.prototype.initTabs = function () {
+    Page.prototype.initTabList = function () {
         var self = this;
 
-        self.controls.tabs.tabs({
+        self.controls.tabList.tabs({
             fit: true,
             border: false,
             onContextMenu: function (e, title, index) {
                 e.preventDefault();
 
-                self.controls.tabs.tabs("select", title);
+                self.controls.tabList.tabs("select", title);
 
-                var Tabs = $('.tabs-closable');
-                var leftTabs = $('.tabs-selected').prevAll();
-                var rightTabs = $('.tabs-selected').nextAll();
+                var tabList = $('.tabList-closable');
+                var lefttabList = $('.tabList-selected').prevAll();
+                var righttabList = $('.tabList-selected').nextAll();
                 self.controls.tabMenu.menu({
                     onHide: function () {
                         $(this).empty();
@@ -136,32 +136,32 @@ $(function () {
                     text: '刷新',
                     iconCls: 'icon-reload',
                     onclick: function () {
-                        self.controls.tabs.tabs('getTab', title).panel("refresh");
+                        self.controls.tabList.tabs('getTab', title).panel("refresh");
                     }
                 }).menu('appendItem', {
                     separator: true
                 }).menu('appendItem', {
                     text: '关闭',
-                    disabled: !self.controls.tabs.tabs('getTab', title).panel("options").closable,
+                    disabled: !self.controls.tabList.tabs('getTab', title).panel("options").closable,
                     iconCls: 'icon-cancel',
                     onclick: function () {
-                        self.controls.tabs.tabs('close', title);
+                        self.controls.tabList.tabs('close', title);
                     }
                 }).menu('appendItem', {
                     text: '全部关闭',
-                    disabled: Tabs.length == 0,
+                    disabled: tabList.length == 0,
                     onclick: function () {
-                        Tabs.each(function (i, n) {
-                            self.controls.tabs.tabs('close', $(n).text());
+                        tabList.each(function (i, n) {
+                            self.controls.tabList.tabs('close', $(n).text());
                         });
                     }
                 }).menu('appendItem', {
                     text: '除此之外全部关闭',
-                    disabled: Tabs.length <= 1,
+                    disabled: tabList.length <= 1,
                     onclick: function () {
-                        Tabs.each(function (i, n) {
+                        tabList.each(function (i, n) {
                             if ($(n).text() != title) {
-                                self.controls.tabs.tabs('close', $(n).text());
+                                self.controls.tabList.tabs('close', $(n).text());
                             }
                         });
                     }
@@ -169,21 +169,21 @@ $(function () {
                     separator: true
                 }).menu('appendItem', {
                     text: '左侧全部关闭',
-                    disabled: leftTabs.length == 0,
+                    disabled: lefttabList.length == 0,
                     onclick: function () {
                         prevall.each(function (i, n) {
-                            var tmpTab = self.controls.tabs.tabs('getTab', $('.tabs-title', $(n)).text());
+                            var tmpTab = self.controls.tabList.tabs('getTab', $('.tabList-title', $(n)).text());
                             if (tmpTab.panel('options').closable) {
-                                self.controls.tabs.tabs('close', tmpTab.panel('options').title);
+                                self.controls.tabList.tabs('close', tmpTab.panel('options').title);
                             }
                         });
                     }
                 }).menu('appendItem', {
                     text: '右侧全部关闭',
-                    disabled: rightTabs.length == 0,
+                    disabled: righttabList.length == 0,
                     onclick: function () {
                         nextall.each(function (i, n) {
-                            self.controls.tabs.tabs('close', $('.tabs-title', $(n)).text());
+                            self.controls.tabList.tabs('close', $('.tabList-title', $(n)).text());
                         });
                     }
                 }).menu('show', {
@@ -192,7 +192,7 @@ $(function () {
                 });
             },
             onSelect: function (title, index) {
-                self.controls.navs.find('.tree-node').each(function (i, n) {
+                self.controls.navList.find('.tree-node').each(function (i, n) {
                     if ($(n).hasClass('tree-node-selected') && $('.tree-title', $(n)).text() == title) {
                     } else if ($(n).hasClass('tree-node-selected')) {
                         $(n).removeClass('tree-node-selected');
@@ -213,10 +213,10 @@ $(function () {
     Page.prototype.openTab = function (node, closable) {
         var self = this;
 
-        if (self.controls.tabs.tabs("exists", node.text)) {
-            self.controls.tabs.tabs("select", node.text);
+        if (self.controls.tabList.tabs("exists", node.text)) {
+            self.controls.tabList.tabs("select", node.text);
         } else {
-            self.controls.tabs.tabs("add", {
+            self.controls.tabList.tabs("add", {
                 title: node.text,
                 closable: closable,
                 iconCls: node.iconCls,
@@ -228,5 +228,5 @@ $(function () {
         }
     }
 
-    new Page(".layout-home-index");
+    new Page("home-index");
 });

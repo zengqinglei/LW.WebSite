@@ -1,53 +1,145 @@
 ﻿/* reset css */
-body, div, h1, h2, h3, h4, h5, h6, hr, blockquote, img, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend/*, button, input, textarea*/ {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0 none;
-	vertical-align: baseline;
-	background: transparent;
+body, div, h1, h2, h3, h4, h5, h6, hr, blockquote, img, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend /*, button, input, textarea*/ {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0 none;
+    vertical-align: baseline;
+    background: transparent;
 }
+
 ul, ol {
-	list-style: none;
+    list-style: none;
 }
+
 :link, :visited {
-	text-decoration: none;
+    text-decoration: none;
 }
+
 :focus {
-	outline: 0;		/* ie6-7 invalid */
+    outline: 0; /* ie6-7 invalid */
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
 table, caption, tbody, tr, td, th {
-	border-color: inherit;
+    border-color: inherit;
 }
+
 .clearfix:after {
-	display: block;
-	visibility: hidden;
-	content: ".";
-	height: 0;
-	clear: both
+    display: block;
+    visibility: hidden;
+    content: ".";
+    height: 0;
+    clear: both;
 }
+
 .clearfix {
-	*zoom: 1;
+    *zoom: 1;
 }
+
 textarea {
-	resize: none;
+    resize: none;
 }
 
 input {
+    border: solid 1px #ccc;
+    outline: none;
+}
+
+    input:focus {
+        border: solid 2px #FFDC97;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        vertical-align: middle;
+        margin-top: -2px;
+        margin-bottom: 1px;
+        margin-right: 5px;
+    }
+.grid-search{
+    height:85px;
+}
+.grid-search ul {
+    margin-top: 5px;
+    padding: 0;
+}
+
+    .grid-search ul li {
+        float: left;
+        height: 30px;
+    }
+
+.grid-search input,
+.grid-search select {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    vertical-align: middle;
+    height: 20px;
+    border: solid 1px #95B8E7;
+}
+
+.grid-search .editor-label {
+    height: 22px;
+    line-height: 22px;
+    padding-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.grid-search .editor-label-child {
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.grid-search .editor-field {
+    height: 22px;
+    line-height:22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.editor-table{
+    margin:10px;
+}
+.editor-table tr
+{
+    height:35px;
+}
+.editor-table tr td
+{
     border:solid 1px #ccc;
-    outline:none;
 }
-input:focus {
-	border:solid 2px #FFDC97 ;
+.editor-table td.editor-title
+{
+    padding-left:10px;
+    text-align:left;
+    font-size:16px;
+    font-weight:bold;
+    color: #E87B26;
+    background-color:#fff;
 }
-input[type="radio"],
-input[type="checkbox"] {
-	vertical-align:middle; 
-	margin-top:-2px; 
-	margin-bottom:1px;
-	margin-right: 5px;
+.editor-table .editor-label
+{
+    text-align:right;
+    background-color:#f2f1f1;
+    width:140px;
+    font-weight:bold;
+}
+.editor-table .editor-field,
+.editor-table .editor-display
+{
+    padding-left:5px;
+    width:195px;
+    font-size:12px;
+    text-align:left;
+    background-color:#fff;
 }

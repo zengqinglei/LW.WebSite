@@ -3,13 +3,13 @@
 $(function () {
     function Page(selector) {
         this.controls = {
-            loginDialog: $(selector),
-            loginForm: $(selector + ' form'),
-            txtAccount: $(selector + ' form [name="Account"]'),
-            txtPassword: $(selector + ' form [name="Password"]'),
-            txtValidCode: $(selector + ' form [name="ValidCode"]'),
-            imgValidCode: $(selector + ' form .img-validcode'),
-            aRefreshValidCode: $(selector + ' form .a-refreshvalidcode')
+            dlgLogin: $(".dialog-" + selector),
+            frmLogin: $(".dialog-" + selector + ' form'),
+            frmLogin_txtAccount: $(".dialog-" + selector + ' form [name="Account"]'),
+            frmLogin_pwdPassword: $(".dialog-" + selector + ' form [name="Password"]'),
+            frmLogin_txtValidcode: $(".dialog-" + selector + ' form [name="ValidCode"]'),
+            frmLogin_imgValidcode: $(".dialog-" + selector + ' form .img-validcode'),
+            frmLogin_btnRefvalidcode: $(".dialog-" + selector + ' form .a-refreshvalidcode')
         }
 
         this.init();
@@ -17,7 +17,7 @@ $(function () {
     Page.prototype.init = function () {
         var self = this;
 
-        self.controls.loginDialog.dialog({
+        self.controls.dlgLogin.dialog({
             title: '罗莉盒微信--管理员登录',
             width: 400,
             closable: false,
@@ -32,27 +32,27 @@ $(function () {
                 handler: function () { self.onReset(); }
             }],
             onOpen: function () {
-                self.controls.txtAccount.validatebox({
+                self.controls.frmLogin_txtAccount.validatebox({
                     required: true,
                     missingMessage: '请输入管理员帐号'
                 });
-                self.controls.txtPassword.validatebox({
+                self.controls.frmLogin_pwdPassword.validatebox({
                     required: true,
                     missingMessage: '请输入管理员密码',
                     validType: 'length[6,12]',
                     invalidMessage: '格式有误，请输入6~12位字符'
                 });
-                self.controls.txtValidCode.focus(function () {
-                    self.controls.txtValidCode.validatebox("disableValidation");
+                self.controls.frmLogin_txtValidcode.focus(function () {
+                    self.controls.frmLogin_txtValidcode.validatebox("disableValidation");
                 }).blur(function () {
-                    self.controls.txtValidCode.validatebox("enableValidation");
+                    self.controls.frmLogin_txtValidcode.validatebox("enableValidation");
                 }).validatebox({
                     required: true,
                     missingMessage: '请输入4位验证码',
                     validType: 'length[4,4]',
                     invalidMessage: '格式有误，请输入4位验证码'
                 });
-                self.controls.loginForm.form('disableValidation').find('input').bind('keyup', function (event) {
+                self.controls.frmLogin.form('disableValidation').find('input').bind('keyup', function (event) {
                     if (event.keyCode == '13') {
                         self.onLogin();
                     }
@@ -62,12 +62,12 @@ $(function () {
         });
 
         self.refreshValidCode();
-        self.controls.aRefreshValidCode.click(function () { self.refreshValidCode(); });
+        self.controls.frmLogin_btnRefvalidcode.click(function () { self.refreshValidCode(); });
     }
     Page.prototype.onLogin = function () {
         var self = this;
 
-        self.controls.loginForm.form('enableValidation').form('submit', {
+        self.controls.frmLogin.form('enableValidation').form('submit', {
             success: function (data) {
                 var json = jQuery.parseJSON(data);
                 if (json.status == 1) {
@@ -76,7 +76,7 @@ $(function () {
                     } else {
                         showMsg({ msg: json.msg, icon: "success" });
                     }
-                    self.controls.loginDialog.dialog('close');
+                    self.controls.dlgLogin.dialog('close');
                 } else {
                     self.refreshValidCode();
                     showMsg({ msg: json.msg, icon: "error" });
@@ -87,15 +87,15 @@ $(function () {
     Page.prototype.onReset = function () {
         var self = this;
 
-        self.controls.loginForm.form('reset');
+        self.controls.frmLogin.form('reset');
         self.refreshValidCode();
-        self.controls.loginForm.form('disableValidation');
+        self.controls.frmLogin.form('disableValidation');
     }
     Page.prototype.refreshValidCode = function () {
         var self = this;
 
-        refreshValidCode(self.controls.imgValidCode);
+        refreshValidCode(self.controls.frmLogin_imgValidcode);
     }
 
-    new Page(".dialog-account-login");
+    new Page("account-login");
 });

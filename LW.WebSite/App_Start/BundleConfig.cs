@@ -19,8 +19,8 @@ namespace LW.WebSite
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-easyui").Include(
-                        "~/Scripts/jquery-easyui/locale/easyui-lang-zh_CN.js",
                         "~/Scripts/jquery-easyui/jquery.easyui.js",
+                        "~/Scripts/jquery-easyui/locale/easyui-lang-zh_CN.js",
                         "~/Scripts/jquery-easyui/jquery.easyui-ext.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/common").Include(
                         "~/Scripts/Admin/common.js"));
@@ -28,6 +28,8 @@ namespace LW.WebSite
                         "~/Scripts/Admin/account.login.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/home-index").Include(
                         "~/Scripts/Admin/home.index.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/user-list").Include(
+                        "~/Scripts/Admin/user.list.js"));
             #endregion
 
             #region 绑定样式

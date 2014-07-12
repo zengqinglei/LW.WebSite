@@ -1,0 +1,62 @@
+﻿@model LW.ViewModels.AdminSite.VM_User
+
+<table class="editor-table">
+    <tr>
+        <td class="editor-label">注册时间：</td>
+        <td class="editor-display">@Model.addtime.ToString("yyyy-MM-dd HH:ss:mm")</td>
+        <td class="editor-label">昵  称：</td>
+        <td class="editor-display">@Model.nickname</td>
+    </tr>
+    <tr>
+        <td class="editor-label">邮  箱：</td>
+        <td class="editor-display">@Model.usermail</td>
+        <td class="editor-label">是否启用：</td>
+        <td class="editor-display">@string.Format(Model.state?"已启用":"未启用")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">积  分：</td>
+        <td class="editor-display">@Model.score</td>
+        <td class="editor-label">经 验 值：</td>
+        <td class="editor-display">@Model.experience</td>
+    </tr>
+    <tr>
+        <td class="editor-label">订单总数：</td>
+        <td class="editor-display">@Model.order_num</td>
+        <td class="editor-label">评 测 数：</td>
+        <td class="editor-display">@Model.evaluate_num</td>
+    </tr>
+    <tr>
+        <td class="editor-label">收 藏 数：</td>
+        <td class="editor-display">@Model.collect_num</td>
+        <td class="editor-label">关 注 数：</td>
+        <td class="editor-display">@Model.follow_num</td>
+    </tr>
+    <tr>
+        <td class="editor-label">粉 丝 数：</td>
+        <td class="editor-display">@Model.fans_num</td>
+        <td class="editor-label">日 志 数：</td>
+        <td class="editor-display">@Model.blog_num</td>
+    </tr>
+    <tr>
+        <td class="editor-label">优 惠 券：</td>
+        <td class="editor-display">@Model.coupon_num</td>
+        <td class="editor-label">是否达人会员：</td>
+        <td class="editor-display">@string.Format(Model.if_super?"是":"否")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">是否为移动用户：</td>
+        <td class="editor-display">@string.Format(Model.is_mobile?"是":"否")</td>
+        <td class="editor-label">是否验证手机：</td>
+        <td class="editor-display">@string.Format(Model.tel_status ? "是" : "否")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">是否为解决方案：</td>
+        <td class="editor-display">@string.Format(Model.is_solution? "是" : "否")</td>
+        <td class="editor-label">是否为推广者：</td>
+        <td class="editor-display">@string.Format(Model.is_spreader? "是" : "否")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">是否知道渠道：</td>
+        <td class="editor-display" colspan="3">@Model.know_way</td>
+    </tr>
+</table>

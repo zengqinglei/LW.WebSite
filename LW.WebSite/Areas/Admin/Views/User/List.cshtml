@@ -1,0 +1,30 @@
+﻿<div class="easyui-layout" data-options="fit: true">
+    <div class="grid-search search-user-list" data-options="region:'north',title:'查询条件',split:true">
+        <ul class="clearfix">
+            <li class="clearfix">
+                <span class="editor-label">注册时间：</span>
+                <span class="editor-field"><input class="date-regBeginTime" /></span>
+                <span class="editor-label-child">至</span>
+                <span class="editor-field"><input class="date-regEndTime" /></span>
+            </li>
+            <li class="clearfix">
+                <span class="editor-label">昵称：</span>
+                <span class="editor-field"><input class="text-nickname" /></span>
+            </li>
+            <li class="clearfix">
+                <span class="editor-label">邮箱：</span>
+                <span class="editor-field"><input class="text-usermail" /></span>
+            </li>
+            <li>
+                <span class="editor-label"><a href="javascript:void(0);" class="button-search">查询</a></span>
+            </li>
+            <li class="clearfix">
+                <span class="editor-label"><a href="javascript:void(0);" class="button-clear">清空</a></span>
+            </li>
+        </ul>
+    </div>
+    <div class="grid-user-list" data-options="region:'center', border:false">
+        <table class="grid-table"></table>
+    </div>
+</div>
+@Scripts.Render("~/bundles/admin/user-list")

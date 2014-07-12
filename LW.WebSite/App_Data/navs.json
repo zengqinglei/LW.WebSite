@@ -1,16 +1,16 @@
 ﻿[
     {
-        "text": "客服作业",
+        "text": "客户管理",
         "state": true,
         "_checked": true,
         "iconCls": "icon-01-00",
         "children": [
             {
-                "text": "维修登记",
+                "text": "账号管理",
                 "isRefresh": true,
-                "iconCls": "icon-01-01",
+                "iconCls": "icon-01-09",
                 "attributes": {
-                    "url": "/admin/maintain/report"
+                    "url": "/admin/user/list"
                 }
             }
         ]

@@ -24,30 +24,35 @@ namespace LW.Controllers.AdminSite
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(VM_MLogin vm_MLogin)
+        public ActionResult Login(string account, string password, string validcode)
         {
-            #region 数据验证
-            if (!string.Equals(B_Service.GetValidCode(), vm_MLogin.ValidCode, StringComparison.OrdinalIgnoreCase))
-            {
-                return Json(new Result("验证码错误！"));
-            }
-            if (ConfigHelper.GetValue("AdminAccount") != vm_MLogin.Account || ConfigHelper.GetValue("AdminPassword") != EDHelper.MD5Encrypt(vm_MLogin.Password))
-            {
-                return Json(new Result("账户或密码错误！"));
-            }
-            #endregion
-
-
-            FormsAuthentication.SetAuthCookie(vm_MLogin.Account, false);
-
             var result = new Result();
-            if (Request["isAjax"] != "true")
+            try
             {
-                result.data = Request["backurl"] ?? "/admin";
-            }
-            result.status = 1;
-            result.msg = "登录成功！";
+                #region 数据验证
+                if (!string.Equals(B_Service.GetValidCode(), validcode, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new Exception("验证码错误！");
+                }
+                if (ConfigHelper.GetValue("AdminAccount") != account || ConfigHelper.GetValue("AdminPassword") != EDHelper.MD5Encrypt(password))
+                {
+                    throw new Exception("账户或密码错误！");
+                }
+                #endregion
 
+                FormsAuthentication.SetAuthCookie(account, false);
+
+                if (Request["isAjax"] != "true")
+                {
+                    result.data = Request["backurl"] ?? "/admin";
+                }
+                result.status = 1;
+                result.msg = "登录成功！";
+            }
+            catch (Exception ex)
+            {
+                result.msg = ex.Message;
+            }
             return Json(result, "text/html");
         }
         #endregion
@@ -59,6 +64,31 @@ namespace LW.Controllers.AdminSite
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
+        }
+        #endregion
+
+        #region 账户管理--重置密码
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(string oldpassword, string newpassword)
+        {
+            var result = new Result();
+            try
+            {
+                if (ConfigHelper.GetValue("AdminPassword") != EDHelper.MD5Encrypt(oldpassword))
+                {
+                    throw new Exception("原密码不正确！");
+                }
+                ConfigHelper.UpdateConfigValueOfKey("AdminPassword", EDHelper.MD5Encrypt(newpassword));
+
+                result.msg = "密码修改成功！";
+                result.status = 1;
+            }
+            catch (Exception ex)
+            {
+                result.msg = ex.Message;
+            }
+            return Json(result, "text/html");
         }
         #endregion
     }
