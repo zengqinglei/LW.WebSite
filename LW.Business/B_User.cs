@@ -19,11 +19,10 @@ namespace LW.Business
         public B_User()
         {
             Mapper.CreateMap<users, VM_User>()
-                .ForMember(dto => dto.addtime, opt => opt.MapFrom(entity => entity.addtime.ToString("yyyy-MM-dd HH:mm:ss")))
                 .ForMember(dto => dto.password, opt => opt.MapFrom(entity => string.Empty));
             Mapper.CreateMap<VM_User, users>()
                 .ForMember(dto => dto.password, opt => opt.MapFrom(entity => entity.password ?? EDHelper.MD5Encrypt("123456")))
-                .ForMember(dto => dto.addtime, opt => opt.MapFrom(entity => string.IsNullOrEmpty(entity.addtime) ? DateTime.Now : DateTime.Parse(entity.addtime)))
+                .ForMember(dto => dto.addtime, opt => opt.MapFrom(entity => entity.addtime ?? DateTime.Now))
                 .ForMember(dto => dto.invitecode, opt => opt.MapFrom(entity => entity.invitecode ?? "无"))
                 .ForMember(dto => dto.know_way, opt => opt.MapFrom(entity => entity.know_way ?? "无"));
         }
@@ -52,16 +51,16 @@ namespace LW.Business
 
         #region 客户管理--查询 分页 排序 条件
         public List<VM_User> GetListPage(int page, int rows, out int total, string sort = null, string order = null,
-            DateTime? regBeginTime = null, DateTime? regEndTime = null, string nickname = null, string usermail = null)
+            DateTime? addBeginTime = null, DateTime? addEndTime = null, string nickname = null, string usermail = null)
         {
             Expression<Func<users, bool>> where = m => true;
-            if (regBeginTime.HasValue)
+            if (addBeginTime.HasValue)
             {
-                where = where.And(m => m.addtime >= regBeginTime);
+                where = where.And(m => m.addtime >= addBeginTime);
             }
-            if (regEndTime.HasValue)
+            if (addEndTime.HasValue)
             {
-                where = where.And(m => m.addtime < regEndTime);
+                where = where.And(m => m.addtime < addEndTime);
             }
             if (!string.IsNullOrEmpty(nickname))
             {

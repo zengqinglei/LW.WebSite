@@ -32,6 +32,10 @@ namespace LW.WebSite
                         "~/Scripts/Admin/user.list.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/user-save").Include(
                         "~/Scripts/Admin/user.save.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/category-list").Include(
+                        "~/Scripts/Admin/category.list.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/box-list").Include(
+                        "~/Scripts/Admin/box.list.js"));
             #endregion
 
             #region 绑定样式

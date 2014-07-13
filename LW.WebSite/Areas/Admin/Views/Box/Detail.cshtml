@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+@model LW.ViewModels.AdminSite.VM_Box
+
+<table class="editor-table">
+    <tr>
+        <td class="editor-label">注册时间：</td>
+        <td class="editor-display">@Model.addtime.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        <td class="editor-label">盒子名称：</td>
+        <td class="editor-display">@Model.name</td>
+    </tr>
+    <tr>
+        <td class="editor-label">商品分类：</td>
+        <td class="editor-display">@Model.category</td>
+        <td class="editor-label">数    量：</td>
+        <td class="editor-display">@Model.quantity</td>
+    </tr>
+    <tr>
+        <td class="editor-label">开始时间：</td>
+        <td class="editor-display">@Model.starttime.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        <td class="editor-label">结束时间：</td>
+        <td class="editor-display">@Model.endtime.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">特权会员价格：</td>
+        <td class="editor-display">@Model.member_price</td>
+        <td class="editor-label">盒子描述：</td>
+        <td class="editor-display">@Model.box_intro</td>
+    </tr>
+    <tr>
+        <td class="editor-label">盒子发送信息备注：</td>
+        <td class="editor-display">@Model.box_remark</td>
+        <td class="editor-label">盒子发送时间：</td>
+        <td class="editor-display">@Model.box_senddate</td>
+    </tr>
+    <tr>
+        <td class="editor-label">盒子状态：</td>
+        <td class="editor-display">@Model.state</td>
+        <td class="editor-label">允许无订单购买：</td>
+        <td class="editor-display">@Model.only_newuser</td>
+    </tr>
+    <tr>
+        <td class="editor-label">可重复购买：</td>
+        <td class="editor-display">@Model.if_repeat</td>
+        <td class="editor-label">可使用优惠券：</td>
+        <td class="editor-display">@string.Format(Model.if_use_coupon ? "是" : "否")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">是否送特权会员：</td>
+        <td class="editor-display">@Model.if_give_member</td>
+        <td class="editor-label">购买盒子发送有效期：</td>
+        <td class="editor-display">@(Model.coupon_valid_date.HasValue?Model.coupon_valid_date.Value.ToString("yyyy-MM-dd"):string.Empty)</td>
+    </tr>
+    <tr>
+        <td class="editor-label">盒子描述：</td>
+        <td class="editor-display">@Model.boxcost</td>
+        <td class="editor-label">UI小图显示：</td>
+        <td class="editor-display">@string.Format(Model.icontype ? "是" : "否")</td>
+    </tr>
+    <tr>
+        <td class="editor-label">显示倒计时：</td>
+        <td class="editor-display">@string.Format(Model.ifshowtime ? "是" : "否")</td>
+        <td class="editor-label">推荐置顶顺序：</td>
+        <td class="editor-display">@Model.toptime</td>
+    </tr>
+    <tr>
+        <td class="editor-label">显示倒计时：</td>
+        <td class="editor-display" colspan="3">@Model.if_hidden</td>
+    </tr>
+</table>

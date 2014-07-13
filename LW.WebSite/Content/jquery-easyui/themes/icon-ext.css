@@ -18,7 +18,15 @@
 .icon-error {
   background: url('default/images/messager_icons.png') no-repeat scroll -64px 0;
 }
-
+.icon-info {
+  background: url('default/images/messager_icons.png') no-repeat scroll 0 0;
+}
+.icon-question {
+  background: url('default/images/messager_icons.png') no-repeat scroll -32px 0;
+}
+.icon-warning {
+  background: url('default/images/messager_icons.png') no-repeat scroll -96px 0;
+}
 .icon-left {
     background: url('icon-ext/32x32/icon-left.gif') no-repeat;
 }
@@ -119,6 +127,9 @@
     background: url(icon-ext/16x16/icon-02-04.png) no-repeat;
 }
 
+.icon-02-06 {
+    background: url(icon-ext/16x16/icon-02-06.png) no-repeat;
+}
 .icon-02-05 {
     background: url(icon-ext/16x16/icon-02-05.png) no-repeat;
 }
@@ -130,13 +141,43 @@
 .icon-02-08 {
     background: url(icon-ext/16x16/icon-02-08.png) no-repeat;
 }
-
-.icon-02-06 {
-    background: url(icon-ext/16x16/icon-02-06.png) no-repeat;
+.icon-02-09 {
+    background: url(icon-ext/16x16/icon-02-09.png) no-repeat;
+}
+.icon-02-10 {
+    background: url(icon-ext/16x16/icon-02-10.png) no-repeat;
 }
 
+.icon-02-11 {
+    background: url(icon-ext/16x16/icon-02-11.png) no-repeat;
+}
+
+.icon-02-12 {
+    background: url(icon-ext/16x16/icon-02-12.png) no-repeat;
+}
+.icon-02-13 {
+    background: url(icon-ext/16x16/icon-02-13.png) no-repeat;
+}
 .icon-02-14 {
     background: url(icon-ext/16x16/icon-02-14.png) no-repeat;
+}
+.icon-02-15 {
+    background: url(icon-ext/16x16/icon-02-15.png) no-repeat;
+}
+.icon-02-16 {
+    background: url(icon-ext/16x16/icon-02-16.png) no-repeat;
+}
+.icon-02-17 {
+    background: url(icon-ext/16x16/icon-02-17.png) no-repeat;
+}
+.icon-02-18 {
+    background: url(icon-ext/16x16/icon-02-18.png) no-repeat;
+}
+.icon-02-19 {
+    background: url(icon-ext/16x16/icon-02-19.png) no-repeat;
+}
+.icon-02-20 {
+    background: url(icon-ext/16x16/icon-02-20.png) no-repeat;
 }
 
 .icon-04-01 {

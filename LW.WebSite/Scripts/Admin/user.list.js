@@ -4,8 +4,8 @@ $(function () {
     function Page(selector) {
         this.selector = selector;
         this.controls = {
-            seaList_dateRegbtime: $(".search-" + selector + " .date-regBeginTime"),
-            seaList_dateRegetime: $(".search-" + selector + " .date-regEndTime"),
+            seaList_dateAddbegintime: $(".search-" + selector + " .date-addBeginTime"),
+            seaList_dateAddendtime: $(".search-" + selector + " .date-addEndTime"),
             seaList_txtNickname: $(".search-" + selector + " .text-nickname"),
             seaList_txtUsermail: $(".search-" + selector + " .text-usermail"),
             seaList_btnSearch: $(".search-" + selector + " .button-search"),
@@ -19,22 +19,22 @@ $(function () {
     Page.prototype.initSearch = function () {
         var self = this;
 
-        self.controls.seaList_dateRegbtime.datetimebox({ value: new Date().toDateString() });
-        self.controls.seaList_dateRegetime.datetimebox({ value: new Date().getDate().toString() });
+        self.controls.seaList_dateAddbegintime.datetimebox({ value: new Date().toDateString() });
+        self.controls.seaList_dateAddendtime.datetimebox({ value: new Date().getDate().toString() });
         self.controls.seaList_txtNickname.validatebox();
         self.controls.seaList_txtUsermail.validatebox();
 
         self.controls.seaList_btnSearch.linkbutton({ iconCls: "icon-search" }).click(function () {
             self.controls.gridList.datagrid("load", {
-                regBegintime: self.controls.seaList_dateRegbtime.datetimebox("getValue"),
-                regEndtime: self.controls.seaList_dateRegetime.datetimebox("getValue"),
+                addBegintime: self.controls.seaList_dateAddbegintime.datetimebox("getValue"),
+                addEndtime: self.controls.seaList_dateAddendtime.datetimebox("getValue"),
                 nickname: self.controls.seaList_txtNickname.val(),
                 usermail: self.controls.seaList_txtUsermail.val(),
             });
         });
         self.controls.seaList_btnClear.linkbutton({ iconCls: "icon-reload" }).click(function () {
-            self.controls.seaList_dateRegbtime.datetimebox("setValue", "");
-            self.controls.seaList_dateRegetime.datetimebox("setValue", "");
+            self.controls.seaList_dateAddbegintime.datetimebox("setValue", "");
+            self.controls.seaList_dateAddendtime.datetimebox("setValue", "");
             self.controls.seaList_txtNickname.val("");
             self.controls.seaList_txtUsermail.val("");
         });
@@ -49,14 +49,22 @@ $(function () {
             rownumbers: true,
             pagination: true,
             queryParams: {
-                regBeginTime: self.controls.seaList_dateRegbtime.datetimebox("getValue"),
-                regEndTime: self.controls.seaList_dateRegetime.datetimebox("getValue")
+                addBeginTime: self.controls.seaList_dateAddbegintime.datetimebox("getValue"),
+                addEndTime: self.controls.seaList_dateAddendtime.datetimebox("getValue")
             },
             singleSelect: true,
             pageSize: 20,
             columns: [
                 [
-                    { field: "addtime", title: "注册时间", width: 130, sortable: true },
+                    {
+                        field: "addtime", title: "注册时间", width: 130, sortable: true,
+                        formatter: function (value) {
+                            if (value) {
+                                var date = new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
+                                return date.format("yyyy-MM-dd HH:mm:ss");
+                            }
+                        }
+                    },
                     { field: "nickname", title: "昵称", width: 100, sortable: true },
                     { field: "usermail", title: "邮箱", width: 150, sortable: true },
                     {
@@ -151,7 +159,7 @@ $(function () {
             title: "客户详细资料--" + row.nickname,
             iconCls: 'icon-09-08',
             width: 680,
-            height: 360,
+            top: 100,
             modal: true,
             onClose: function () { $(this).dialog("destroy"); }
         });
@@ -165,7 +173,7 @@ $(function () {
             title: (isAdd ? "新增" : "修改") + "客户" + (isAdd ? "" : ("--" + row.nickname)),
             iconCls: (isAdd ? 'icon-01-02' : 'icon-17-20'),
             width: 470,
-            height: 340,
+            top: 100,
             modal: true,
             buttons: [
                 {

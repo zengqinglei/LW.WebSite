@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="B_Base.cs" />
+    <Compile Include="B_Box.cs" />
+    <Compile Include="B_Category.cs" />
     <Compile Include="B_Service.cs" />
     <Compile Include="B_User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

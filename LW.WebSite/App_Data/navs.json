@@ -22,5 +22,29 @@
                 }
             }
         ]
+    },
+    {
+        "text": "产品管理",
+        "state": true,
+        "_checked": true,
+        "iconCls": "icon-02-10",
+        "children": [
+            {
+                "text": "产品类别",
+                "isRefresh": true,
+                "iconCls": "icon-02-16",
+                "attributes": {
+                    "url": "/admin/category/list"
+                }
+            },
+            {
+                "text": "盒子列表",
+                "isRefresh": true,
+                "iconCls": "icon-02-09",
+                "attributes": {
+                    "url": "/admin/box/list"
+                }
+            }
+        ]
     }
 ]

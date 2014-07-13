@@ -4,13 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+#region 命名空间
+using System.Net;
+#endregion
 
 namespace LW.Controllers.AdminSite.Filters
 {
-    public class FormsAuthorizeAttribute : ActionFilterAttribute
+    public class FormsAuthorizeAttribute : AuthorizeAttribute
     {
-        #region 验证当前用户是否已认证
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.Controller is Controller)
             {
@@ -18,12 +20,20 @@ namespace LW.Controllers.AdminSite.Filters
                 {
                     if (filterContext.HttpContext.Request.IsAjaxRequest() || filterContext.IsChildAction)
                     {
-                        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+                        filterContext.HttpContext.SkipAuthorization = true;
+                        filterContext.HttpContext.Response.Clear();
+                        filterContext.Result = new JsonResult()
                         {
-                            controller = "account",
-                            action = "login",
-                            isAjax = true
-                        }));
+                            Data = new
+                            {
+                                url = new UrlHelper(filterContext.RequestContext).Action("_login", "account"),
+                                backurl = filterContext.HttpContext.Request.RawUrl
+                            },
+                            JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                        };
+                        filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
+                        filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                        filterContext.HttpContext.Response.End();
                     }
                     else
                     {
@@ -31,12 +41,11 @@ namespace LW.Controllers.AdminSite.Filters
                         {
                             controller = "account",
                             action = "login",
-                            backurl = filterContext.HttpContext.Request.RawUrl,
+                            backurl = filterContext.HttpContext.Request.RawUrl
                         }));
                     }
                 }
             }
         }
-        #endregion
     }
 }

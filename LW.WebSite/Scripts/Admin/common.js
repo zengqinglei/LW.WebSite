@@ -5,16 +5,26 @@ var LW = {
     Url: {
         getValidCode: '/service/getvalidcode'
     },
-    ajaxError: function (XMLHttpRequest, textStatus, errorThrown) {
+    cbLogin: function (data) {
+        window.location = data.data;
+    },
+    ajaxError: function (XMLHttpRequest, callback) {
         switch (XMLHttpRequest.status) {
-            case 302:
-                {
-                    $("body").append(XMLHttpRequest.responseText);
-                }
-                break;
             case 401:
                 {
-                    showMsg({ icon: "error", msg: "很抱歉，您所访问的地址未授权！" });
+                    // show login dialog
+                    if (XMLHttpRequest.responseText) {
+                        var data = $.parseJSON(XMLHttpRequest.responseText);
+                        if (data.url) {
+                            $.get(data.url, null, function (html) {
+                                LW.cbLogin = function (data) {
+                                    if (callback) callback();
+                                    showMsg({ icon: 'success', msg: '登录成功,如未自动操作，请重新尝试！' });
+                                };
+                                $("body").append(html);
+                            }, 'html');
+                        }
+                    }
                 }
                 break;
             case 403:
@@ -46,15 +56,66 @@ var LW = {
     }
 };
 
-$.fn.ajaxError = LW.ajaxError;
-$.fn.dialog.defaults.onLoadError = LW.ajaxError;
-$.fn.form.defaults.onLoadError = LW.ajaxError;
-$.fn.panel.defaults.onLoadError = LW.ajaxError;
-$.fn.datagrid.defaults.onLoadError = LW.ajaxError;
-$.fn.treegrid.defaults.onLoadError = LW.ajaxError;
-$.fn.combobox.defaults.onLoadError = LW.ajaxError;
-$.fn.combotree.defaults.onLoadError = LW.ajaxError;
-$.fn.combogrid.defaults.onLoadError = LW.ajaxError;
+$.fn.ajaxError = function () {
+    LW.ajaxError(XMLHttpRequest);
+};
+$.fn.dialog.defaults.onLoadError = function () {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).dialog("refresh");
+    });
+};
+$.fn.form.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).form("submit");
+    });
+};
+// tabs and dialog public
+$.fn.panel.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).panel("refresh");
+    });
+}
+$.fn.datagrid.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).datagrid("reload");
+    });
+}
+$.fn.treegrid.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).treegrid("reload");
+    });
+}
+$.fn.combobox.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).combobox("reload");
+    });
+}
+$.fn.combotree.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).combotree("reload");
+    });
+}
+$.fn.combogrid.defaults.onLoadError = function (XMLHttpRequest) {
+    var self = this;
+
+    LW.ajaxError(XMLHttpRequest, function () {
+        $(self).combogrid("reload");
+    });
+}
 
 Date.prototype.format = function (format) {
     var o = {

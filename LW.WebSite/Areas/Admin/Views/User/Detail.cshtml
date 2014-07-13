@@ -1,9 +1,12 @@
-﻿@model LW.ViewModels.AdminSite.VM_User
+﻿@{
+    Layout = null;
+}
+@model LW.ViewModels.AdminSite.VM_User
 
 <table class="editor-table">
     <tr>
         <td class="editor-label">注册时间：</td>
-        <td class="editor-display">@Model.addtime</td>
+        <td class="editor-display">@Model.addtime.Value.ToString("yyyy-MM-dd HH:mm:ss")</td>
         <td class="editor-label">昵  称：</td>
         <td class="editor-display">@Model.nickname</td>
     </tr>

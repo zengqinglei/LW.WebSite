@@ -22,6 +22,11 @@ namespace LW.Controllers.AdminSite
         {
             return View(new VM_Base());
         }
+        [HttpGet]
+        public ActionResult _Login()
+        {
+            return View(new VM_Base());
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string account, string password, string validcode)
@@ -42,10 +47,7 @@ namespace LW.Controllers.AdminSite
 
                 FormsAuthentication.SetAuthCookie(account, false);
 
-                if (Request["isAjax"] != "true")
-                {
-                    result.data = Request["backurl"] ?? "/admin";
-                }
+                result.data = Request["backurl"] ?? "/admin";
                 result.status = 1;
                 result.msg = "登录成功！";
             }
@@ -69,6 +71,7 @@ namespace LW.Controllers.AdminSite
 
         #region 账户管理--重置密码
         [HttpPost]
+        [FormsAuthorize]
         [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(string oldpassword, string newpassword)
         {

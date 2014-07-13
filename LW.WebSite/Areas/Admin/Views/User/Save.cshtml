@@ -1,4 +1,7 @@
-﻿@model LW.ViewModels.AdminSite.VM_User
+﻿@{
+    Layout = null;
+}
+@model LW.ViewModels.AdminSite.VM_User
 
 @using (Html.BeginForm("save", "user", FormMethod.Post, new { @class = "form-user-save" }))
 {
@@ -63,5 +66,5 @@
             <td class="editor-field">@Html.TextBoxFor(m => m.know_way, new { style = "width:300px;" })</td>
         </tr>
     </table>
+    @Scripts.Render("~/bundles/admin/user-save")
 }
-@Scripts.Render("~/bundles/admin/user-save")

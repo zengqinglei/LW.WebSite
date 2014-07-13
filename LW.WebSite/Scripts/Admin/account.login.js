@@ -58,7 +58,7 @@ $(function () {
                     }
                 });
             },
-            onClose: function () { $(this).dialog('distory'); }
+            onClose: function () { $(this).dialog('destroy'); }
         });
 
         self.refreshValidCode();
@@ -69,17 +69,15 @@ $(function () {
 
         self.controls.frmLogin.form('enableValidation').form('submit', {
             success: function (data) {
-                var json = jQuery.parseJSON(data);
-                if (json.status == 1) {
-                    if (json.data) {
-                        window.location = json.data;
-                    } else {
-                        showMsg({ msg: json.msg, icon: "success" });
+                var data = jQuery.parseJSON(data);
+                if (data.status == 1) {
+                    if (LW.cbLogin) {
+                        LW.cbLogin(data);
                     }
-                    self.controls.dlgLogin.dialog('close');
+                    self.controls.dlgLogin.dialog("close");
                 } else {
                     self.refreshValidCode();
-                    showMsg({ msg: json.msg, icon: "error" });
+                    showMsg({ msg: data.msg, icon: "error" });
                 }
             }
         });

@@ -61,9 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminSite\AccountController.cs" />
+    <Compile Include="AdminSite\CategoryController.cs" />
     <Compile Include="AdminSite\Filters\ExceptionFilter.cs" />
     <Compile Include="AdminSite\Filters\FormsAuthorizeAttribute.cs" />
     <Compile Include="AdminSite\HomeController.cs" />
+    <Compile Include="AdminSite\BoxController.cs" />
     <Compile Include="AdminSite\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceController.cs" />

@@ -14,9 +14,9 @@ using LW.Controllers.AdminSite.Filters;
 namespace LW.Controllers.AdminSite
 {
     [FormsAuthorize]
-    public class UserController : Controller
+    public class BoxController : Controller
     {
-        #region 客户管理--列表
+        #region 产品盒子--列表
         [HttpGet]
         public ActionResult List()
         {
@@ -24,55 +24,55 @@ namespace LW.Controllers.AdminSite
         }
         [HttpPost]
         public ActionResult List(int page, int rows, string sort = null, string order = null,
-            DateTime? addBeginTime = null, DateTime? addEndTime = null, string nickname = null, string usermail = null)
+            DateTime? addBeginTime = null, DateTime? addEndTime = null, string name = null)
         {
             int total = 0;
-            var vmUserList = new B_User().GetListPage(page, rows, out total, sort: sort, order: order,
-                addBeginTime: addBeginTime, addEndTime: addEndTime, nickname: nickname, usermail: usermail);
+            var vmBoxList = new B_Box().GetListPage(page, rows, out total, sort: sort, order: order,
+                addBeginTime: addBeginTime, addEndTime: addEndTime,name:name);
 
-            return Json(new { total = total, rows = vmUserList });
+            return Json(new { total = total, rows = vmBoxList });
         }
         #endregion
 
-        #region 客户管理--详细
+        #region 产品盒子--详细
         [HttpGet]
-        public ActionResult Detail(int userid)
+        public ActionResult Detail(int boxid)
         {
-            return View(new B_User().GetOne(userid));
+            return View(new B_Box().GetOne(boxid));
         }
         #endregion
 
-        #region 客户管理--保存
+        #region 产品盒子--保存
         [HttpGet]
-        public ActionResult Save(int? userid)
+        public ActionResult Save(int? boxid)
         {
-            VM_User vmUser = null;
-            if (userid.HasValue)
+            VM_Box vmBox = null;
+            if (boxid.HasValue)
             {
-                vmUser = new B_User().GetOne(userid.Value);
+                vmBox = new B_Box().GetOne(boxid.Value);
             }
             else
             {
-                vmUser = new VM_User();
+                vmBox = new VM_Box();
             }
-            return View(vmUser);
+            return View(vmBox);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(VM_User vmUser)
+        public ActionResult Save(VM_Box vmBox)
         {
             var result = new Result();
             try
             {
-                if (vmUser.userid.HasValue)
+                if (vmBox.boxid.HasValue)
                 {
-                    result.data = new B_User().Update(vmUser);
-                    result.msg = "修改客户成功！";
+                    result.data = new B_Box().Update(vmBox);
+                    result.msg = "修改产品成功！";
                 }
                 else
                 {
-                    result.data = new B_User().Add(vmUser);
-                    result.msg = "新增客户成功，初始密码为：123456！";
+                    result.data = new B_Box().Add(vmBox);
+                    result.msg = "新增产品成功";
                 }
                 result.status = 1;
             }
@@ -84,14 +84,14 @@ namespace LW.Controllers.AdminSite
         }
         #endregion
 
-        #region 客户管理--删除
+        #region 产品盒子--删除
         [HttpPost]
-        public ActionResult Delete(int userid)
+        public ActionResult Delete(int boxid)
         {
             var result = new Result();
             try
             {
-                new B_User().Delete(userid);
+                new B_Box().Delete(boxid);
 
                 result.msg = "删除成功！";
                 result.status = 1;

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@model LW.ViewModels.AdminSite.VM_Category
+
+<table class="editor-table">
+    <tr>
+        <td class="editor-label">分类名称：</td>
+        <td class="editor-display">@Model.cname</td>
+        <td class="editor-label">分类层级：</td>
+        <td class="editor-display">@Model.cpath</td>
+    </tr>
+    <tr>
+        <td class="editor-label">分类类型：</td>
+        <td class="editor-display">@Model.ctype</td>
+        <td class="editor-label">排序 ID：</td>
+        <td class="editor-display">@Model.sortid</td>
+    </tr>
+    <tr>
+        <td class="editor-label">分类状态：</td>
+        <td class="editor-display">@Model.cstatu</td>
+        <td class="editor-label">配图地址：</td>
+        <td class="editor-display">@Model.imgurl</td>
+    </tr>
+    <tr>
+        <td class="editor-label">描    述：</td>
+        <td class="editor-display" colspan="3">@Model.description</td>
+    </tr>
+</table>

@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\mysqlconfig.txt" />
+    <Content Include="App_Data\update.sql" />
     <Content Include="Content\Admin\account.login.css" />
     <Content Include="Content\Admin\Site.css" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\folder-close.png" />
@@ -234,7 +235,18 @@
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-06.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-07.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-08.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-09.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-10.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-11.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-12.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-13.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-14.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-15.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-16.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-17.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-18.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-19.png" />
+    <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-02-20.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-04-01.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-04-04.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\icon-04-19.png" />
@@ -288,6 +300,8 @@
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-right.gif" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-stop.gif" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-success.gif" />
+    <Content Include="Scripts\Admin\category.list.js" />
+    <Content Include="Scripts\Admin\box.list.js" />
     <Content Include="Scripts\Admin\user.save.js" />
     <Content Include="Scripts\Admin\user.list.js" />
     <Content Include="Scripts\Admin\common.js" />
@@ -623,7 +637,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
@@ -635,6 +648,11 @@
     <Content Include="Areas\Admin\Views\User\List.cshtml" />
     <Content Include="Areas\Admin\Views\User\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\User\Save.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Box\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Box\Detail.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />

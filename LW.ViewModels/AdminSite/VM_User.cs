@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LW.ViewModels.AdminSite
 {
-    public class VM_User:VM_Base
+    public class VM_User
     {
-        public string addtime { get; set; }
+        public DateTime? addtime { get; set; }
         public short blog_num { get; set; }
         public short collect_num { get; set; }
         public short coupon_num { get; set; }
