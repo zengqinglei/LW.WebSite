@@ -56,15 +56,7 @@ $(function () {
             pageSize: 20,
             columns: [
                 [
-                    {
-                        field: "addtime", title: "注册时间", width: 130, sortable: true,
-                        formatter: function (value) {
-                            if (value) {
-                                var date = new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
-                                return date.format("yyyy-MM-dd HH:mm:ss");
-                            }
-                        }
-                    },
+                    { field: "addtime", title: "注册时间", width: 130, sortable: true },
                     { field: "nickname", title: "昵称", width: 100, sortable: true },
                     { field: "usermail", title: "邮箱", width: 150, sortable: true },
                     {
@@ -100,19 +92,24 @@ $(function () {
             ],
             toolbar: [
                 {
-                    id: "btnDetail-" + self.selector,
+                    id: "btnGetUser-" + self.selector,
                     text: '详细',
                     disabled: true,
                     iconCls: 'icon-09-08',
                     handler: function () { self.getUser(); }
                 }, '-', {
-                    id: "btnUpdate-" + self.selector,
+                    id: "btnAddUser-" + self.selector,
+                    text: '新增',
+                    iconCls: 'icon-01-02',
+                    handler: function () { self.savUser(true); }
+                }, '-', {
+                    id: "btnUdpUser-" + self.selector,
                     text: '修改',
                     disabled: true,
                     iconCls: 'icon-17-20',
-                    handler: function () { }
+                    handler: function () { self.savUser(false); }
                 }, '-', {
-                    id: "btnDelete-" + self.selector,
+                    id: "btnDelUser-" + self.selector,
                     text: '删除',
                     disabled: true,
                     iconCls: 'icon-07-08',
@@ -122,13 +119,13 @@ $(function () {
             onSelect: function (rowIndex, rowData) { self.setToolState(); },
             onUnselect: function (rowIndex, rowData) { self.setToolState(); },
             onSelectAll: function (rows) { self.setToolState(); },
-            onUnselectAll: function (rows) { self.setToolState(); },
-            onLoadError: LW.ajaxError
+            onUnselectAll: function (rows) { self.setToolState(); }
         });
         $.extend(self.controls, {
-            gridList_btnDetail: $("#btnDetail-" + self.selector),
-            gridList_btnUpdate: $("#btnUpdate-" + self.selector),
-            gridList_btnDelete: $("#btnDelete-" + self.selector)
+            gridList_btnGetUser: $("#btnGetUser-" + self.selector),
+            gridList_btnAddUser: $("#btnAddUser-" + self.selector),
+            gridList_btnUdpUser: $("#btnUdpUser-" + self.selector),
+            gridList_btnDelUser: $("#btnDelUser-" + self.selector)
         });
     }
     Page.prototype.setToolState = function () {
@@ -136,13 +133,13 @@ $(function () {
 
         var row = self.controls.gridList.datagrid("getSelected");
         if (row) {
-            self.controls.gridList_btnDetail.linkbutton("enable");
-            self.controls.gridList_btnUpdate.linkbutton("enable");
-            self.controls.gridList_btnDelete.linkbutton("enable");
+            self.controls.gridList_btnGetUser.linkbutton("enable");
+            self.controls.gridList_btnUdpUser.linkbutton("enable");
+            self.controls.gridList_btnDelUser.linkbutton("enable");
         } else {
-            self.controls.gridList_btnDetail.linkbutton("disable");
-            self.controls.gridList_btnUpdate.linkbutton("disable");
-            self.controls.gridList_btnDelete.linkbutton("disable");
+            self.controls.gridList_btnGetUser.linkbutton("disable");
+            self.controls.gridList_btnUdpUser.linkbutton("disable");
+            self.controls.gridList_btnDelUser.linkbutton("disable");
         }
     }
     Page.prototype.getUser = function () {
@@ -153,9 +150,46 @@ $(function () {
             href: "/admin/user/detail?userid=" + row.userid,
             title: "客户详细资料--" + row.nickname,
             iconCls: 'icon-09-08',
-            width: 700,
-            height: 410,
+            width: 680,
+            height: 360,
             modal: true,
+            onClose: function () { $(this).dialog("destroy"); }
+        });
+    }
+    Page.prototype.savUser = function (isAdd) {
+        var self = this;
+
+        var row = isAdd ? null : self.controls.gridList.datagrid("getSelected");
+        var dlgSaveUser = $('<div></div>').dialog({
+            href: "/admin/user/save?userid=" + (isAdd ? "" : row.userid),
+            title: (isAdd ? "新增" : "修改") + "客户" + (isAdd ? "" : ("--" + row.nickname)),
+            iconCls: (isAdd ? 'icon-01-02' : 'icon-17-20'),
+            width: 470,
+            height: 340,
+            modal: true,
+            buttons: [
+                {
+                    iconCls: "icon-ok",
+                    text: "保存",
+                    handler: function () {
+                        LW.UserSave.onSubmit(function (data) {
+                            if (data.status == 1) {
+                                if (isAdd) {
+                                    self.controls.gridList.datagrid("insertRow", { index: 0, row: data.data });
+                                } else {
+                                    var index = self.controls.gridList.datagrid("getRowIndex", row);
+                                    self.controls.gridList.datagrid("updateRow", { index: index, row: data.data });
+                                    self.controls.gridList.datagrid("selectRow", index);
+                                }
+                                dlgSaveUser.dialog("close");
+                                showMsg({ msg: data.msg, icon: "success" });
+                            } else {
+                                showMsg({ msg: data.msg, icon: "error" });
+                            }
+                        });
+                    }
+                }
+            ],
             onClose: function () { $(this).dialog("destroy"); }
         });
     }
@@ -174,7 +208,7 @@ $(function () {
                 } else {
                     showMsg({ msg: data.msg, icon: "error" });
                 }
-            }, "json").fail(LW.ajaxError);
+            }, "json");
         });
     }
 

@@ -112,7 +112,7 @@ input {
 }
 .editor-table tr
 {
-    height:35px;
+    height:30px;
 }
 .editor-table tr td
 {
@@ -125,21 +125,20 @@ input {
     font-size:16px;
     font-weight:bold;
     color: #E87B26;
-    background-color:#fff;
 }
 .editor-table .editor-label
 {
     text-align:right;
-    background-color:#f2f1f1;
-    width:140px;
+    background-color:#fcfcfc;
+    width:120px;
     font-weight:bold;
 }
 .editor-table .editor-field,
 .editor-table .editor-display
 {
     padding-left:5px;
+    padding-right:5px;
     width:195px;
     font-size:12px;
     text-align:left;
-    background-color:#fff;
 }

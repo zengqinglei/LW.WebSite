@@ -7,6 +7,7 @@ using System.Web.Mvc;
 #region 命名空间
 using LW.ViewModels;
 using LW.Business;
+using LW.ViewModels.AdminSite;
 #endregion
 
 namespace LW.Controllers.AdminSite
@@ -36,6 +37,48 @@ namespace LW.Controllers.AdminSite
         public ActionResult Detail(int userid)
         {
             return View(new B_User().GetOne(userid));
+        }
+        #endregion
+
+        #region 客户管理--保存
+        [HttpGet]
+        public ActionResult Save(int? userid)
+        {
+            VM_User vmUser = null;
+            if (userid.HasValue)
+            {
+                vmUser = new B_User().GetOne(userid.Value);
+            }
+            else
+            {
+                vmUser = new VM_User();
+            }
+            return View(vmUser);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(VM_User vmUser)
+        {
+            var result = new Result();
+            try
+            {
+                if (vmUser.userid.HasValue)
+                {
+                    result.data = new B_User().Update(vmUser);
+                    result.msg = "修改客户成功！";
+                }
+                else
+                {
+                    result.data = new B_User().Add(vmUser);
+                    result.msg = "新增客户成功，初始密码为：123456！";
+                }
+                result.status = 1;
+            }
+            catch (Exception ex)
+            {
+                result.msg = ex.Message;
+            }
+            return Json(result, "text/html");
         }
         #endregion
 

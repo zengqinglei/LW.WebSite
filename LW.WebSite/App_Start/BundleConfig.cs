@@ -30,6 +30,8 @@ namespace LW.WebSite
                         "~/Scripts/Admin/home.index.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/user-list").Include(
                         "~/Scripts/Admin/user.list.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/user-save").Include(
+                        "~/Scripts/Admin/user.save.js"));
             #endregion
 
             #region 绑定样式

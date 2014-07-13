@@ -44,5 +44,13 @@ namespace LW.Controllers
             return File(image, "image/jpeg");
         }
         #endregion
+
+        #region 公共服务--if exists nickname
+        [HttpPost]
+        public ActionResult ExistNickname(string nickname)
+        {
+            return Json(!new B_User().ExistNickname(nickname));
+        }
+        #endregion
     }
 }

@@ -60,9 +60,7 @@ $(function () {
                 });
                 self.controls.frmResetpw.form("disableValidation");
             },
-            onClose: function () {
-                self.controls.frmResetpw.form("reset").form("disableValidation");
-            }
+            onClose: function () { self.controls.frmResetpw.form("reset").form("disableValidation"); }
         });
     }
     Page.prototype.onLogout = function () {
@@ -112,7 +110,7 @@ $(function () {
                     })
                 });
             });
-        }, 'json').fail(LW.ajaxError);
+        }, 'json');
     }
     Page.prototype.initTabList = function () {
         var self = this;
@@ -222,8 +220,7 @@ $(function () {
                 iconCls: node.iconCls,
                 href: node.attributes.url,
                 loadingMessage: '数据加载中...',
-                bodyCls: "tab-container",
-                onLoadError: LW.ajaxError
+                bodyCls: "tab-container"
             });
         }
     }

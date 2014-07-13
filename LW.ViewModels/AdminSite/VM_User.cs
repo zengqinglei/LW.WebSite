@@ -8,7 +8,7 @@ namespace LW.ViewModels.AdminSite
 {
     public class VM_User:VM_Base
     {
-        public DateTime addtime { get; set; }
+        public string addtime { get; set; }
         public short blog_num { get; set; }
         public short collect_num { get; set; }
         public short coupon_num { get; set; }
@@ -28,7 +28,8 @@ namespace LW.ViewModels.AdminSite
         public int score { get; set; }
         public bool state { get; set; }
         public bool tel_status { get; set; }
-        public long userid { get; set; }
+        public long? userid { get; set; }
+        public string password { get; set; }
         public string usermail { get; set; }
     }
 }

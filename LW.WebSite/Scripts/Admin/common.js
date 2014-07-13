@@ -1,4 +1,6 @@
-﻿// 全局配置
+﻿/// <reference path="../jquery-easyui/jquery.easyui.js" />
+
+// 全局配置
 var LW = {
     Url: {
         getValidCode: '/service/getvalidcode'
@@ -10,9 +12,24 @@ var LW = {
                     $("body").append(XMLHttpRequest.responseText);
                 }
                 break;
+            case 401:
+                {
+                    showMsg({ icon: "error", msg: "很抱歉，您所访问的地址未授权！" });
+                }
+                break;
+            case 403:
+                {
+                    showMsg({ icon: "error", msg: "很抱歉，无权限执行此操作！" });
+                }
+                break;
             case 404:
                 {
                     showMsg({ icon: "error", msg: "很抱歉，您所访问的地址不存在！" });
+                }
+                break;
+            case 408:
+                {
+                    showMsg({ icon: "error", msg: "很抱歉，请求超时！" });
                 }
                 break;
             case 500:
@@ -28,6 +45,17 @@ var LW = {
         }
     }
 };
+
+$.fn.ajaxError = LW.ajaxError;
+$.fn.dialog.defaults.onLoadError = LW.ajaxError;
+$.fn.form.defaults.onLoadError = LW.ajaxError;
+$.fn.panel.defaults.onLoadError = LW.ajaxError;
+$.fn.datagrid.defaults.onLoadError = LW.ajaxError;
+$.fn.treegrid.defaults.onLoadError = LW.ajaxError;
+$.fn.combobox.defaults.onLoadError = LW.ajaxError;
+$.fn.combotree.defaults.onLoadError = LW.ajaxError;
+$.fn.combogrid.defaults.onLoadError = LW.ajaxError;
+
 Date.prototype.format = function (format) {
     var o = {
         "M+": this.getMonth() + 1, //month

@@ -12,6 +12,14 @@
                 "attributes": {
                     "url": "/admin/user/list"
                 }
+            },
+            {
+                "text": "积分管理",
+                "isRefresh": true,
+                "iconCls": "icon-01-05",
+                "attributes": {
+                    "url": "/admin/user/score"
+                }
             }
         ]
     }

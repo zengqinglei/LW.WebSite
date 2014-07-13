@@ -66,6 +66,10 @@
       <Project>{09dcbd16-1f8e-4636-83f3-efc52df44726}</Project>
       <Name>LW.EFEntity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LW.Utility\LW.Utility.csproj">
+      <Project>{02137cfa-d5b4-425a-b24c-954835bf27b4}</Project>
+      <Name>LW.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LW.ViewModels\LW.ViewModels.csproj">
       <Project>{9527cca5-58ff-481b-b45a-a308f0160102}</Project>
       <Name>LW.ViewModels</Name>

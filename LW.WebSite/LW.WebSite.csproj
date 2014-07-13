@@ -288,6 +288,7 @@
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-right.gif" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-stop.gif" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\32x32\icon-success.gif" />
+    <Content Include="Scripts\Admin\user.save.js" />
     <Content Include="Scripts\Admin\user.list.js" />
     <Content Include="Scripts\Admin\common.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -633,6 +634,7 @@
     <Content Include="App_Data\navs.json" />
     <Content Include="Areas\Admin\Views\User\List.cshtml" />
     <Content Include="Areas\Admin\Views\User\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Save.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />

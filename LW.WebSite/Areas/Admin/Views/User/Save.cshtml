@@ -1,0 +1,67 @@
+﻿@model LW.ViewModels.AdminSite.VM_User
+
+@using (Html.BeginForm("save", "user", FormMethod.Post, new { @class = "form-user-save" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.userid)
+    <table class="editor-table">
+        <tr>
+            <td class="editor-label">昵  称：</td>
+            <td class="editor-field">@Html.TextBoxFor(m => m.nickname, new { style = "width:200px;" })</td>
+        </tr>
+        <tr>
+            <td class="editor-label">邮  箱：</td>
+            <td class="editor-field">@Html.TextBoxFor(m => m.usermail, new { style = "width:200px;" })</td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否启用：</td>
+            <td class="editor-field">
+                @Html.RadioButtonFor(m => m.state, true, new { id = "rdoStateTrue", @checked = "checked" })
+                <label for="rdoStateTrue">是</label>
+                @Html.RadioButtonFor(m => m.state, false, new { id = "rdoStateFalse" })
+                <label for="rdoStateFalse">否</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否达人会员：</td>
+            <td class="editor-field">
+                @Html.RadioButtonFor(m => m.if_super, true, new { id = "rdoIssuperTrue" })
+                <label for="rdoIssuperTrue">是</label>
+                @Html.RadioButtonFor(m => m.if_super, false, new { id = "rdoIssuperFalse" })
+                <label for="rdoIssuperFalse">否</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否为移动用户：</td>
+            <td class="editor-field">
+                @Html.RadioButtonFor(m => m.is_mobile, true, new { id = "rdoIsmobileTrue" })
+                <label for="rdoIsmobileTrue">是</label>
+                @Html.RadioButtonFor(m => m.is_mobile, false, new { id = "rdoIsmobileFalse" })
+                <label for="rdoIsmobileFalse">否</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否为解决方案：</td>
+            <td class="editor-field">
+                @Html.RadioButtonFor(m => m.is_solution, true, new { id = "rdoIssolutionTrue" })
+                <label for="rdoIssolutionTrue">是</label>
+                @Html.RadioButtonFor(m => m.is_solution, false, new { id = "rdoIssolutionFalse" })
+                <label for="rdoIssolutionFalse">否</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否为推广者：</td>
+            <td class="editor-field">
+                @Html.RadioButtonFor(m => m.is_spreader, true, new { id = "rdoIsspreaderTrue" })
+                <label for="rdoIsspreaderTrue">是</label>
+                @Html.RadioButtonFor(m => m.is_spreader, false, new { id = "rdoIsspreaderFalse" })
+                <label for="rdoIsspreaderFalse">否</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">是否知道渠道：</td>
+            <td class="editor-field">@Html.TextBoxFor(m => m.know_way, new { style = "width:300px;" })</td>
+        </tr>
+    </table>
+}
+@Scripts.Render("~/bundles/admin/user-save")
