@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<head>
+
+<style>
+
+*{ margin:0; padding:0; border:0; font-family:Arial, Helvetica, sans-serif;  font-size:14px;}
+li{ list-style:none;}
+a{ text-decoration:none; color:black;}
+img{ border:none 0; display:block;}
+a:hover{ color:red;}
+input{ border:none 0;}
+body{ margin:0; padding:0; width:100%; margin:auto; max-width:640px;}
+.left,.right,.chanpin{ float:left; }
+.chanpinbox{ width:570px; margin:auto; overflow:hidden;}
+.chanpin{ width: 433px; margin:auto; position:relative;}
+.tuijian{ position:absolute; left:50px; top:0;}
+.bantou{ width:433px; height:51px; background:url(images/1-chanpin-touming.png); position:absolute;  bottom:0px; text-align:center; color:#FFF; line-height:52px; font-size:20px;}
+.jianjie{ font-size:14px; line-height:38px; width:70%; margin:auto; clear:both; display:block; margin-top:15px; }
+.jiage{width:100%; overflow:hidden; margin:auto; margin-top:15px;}
+ .jiage .now{ width:38%; height:68px; border-bottom:1px solid #696565; border-top:1px solid #696565; border-right:1px solid #696565; text-align:center; line-height:68px; float:left; display:block;}
+.jiage .vip{width:58%; height:68px; border-bottom:1px solid #696565; border-top:1px solid #696565; line-height:68px; float:left; display:block; }
+.vip span,.vip p,.vip a{ float:left;}
+.vip span{ color:#ce0000;margin-left:6%;}
+.vip a{ color:#dc1570;}
+.dingyue{ width:90%; margin:auto; overflow:hidden; margin-top:46px;}
+/*.num{ width:101px;  height:65px; background:url(images/1-chanpin-shu.png) repeat-x  ; text-align:center; line-height:65px; font-size:30px;}*/
+.numl,.numbox img, .numbox .num,.anniu{ float:left;}
+.anniu{ margin-left:7%;}
+.numl{ width:40%;}
+.num{width:100%; height:64px; color:#FFF; font-size:26px; border-radius:8px 8px 8px 8px; margin:auto; margin-top:37px; text-align:center; line-height:64px; background:#dc1570; }
+
+.jiesuan{  height:79px; margin-top:48px; padding-left:30px; background:url(images/1-chanpin-dibu.png) repeat-x; clear:both; }
+.yue{ font-size:14px;color:#FFF; float:left; width:180px; line-height:79px;}
+.shuaxin{ display:block; float:left; margin-top:24px;}
+.dianji{ display:block; float:right; margin-right:0.2%px; margin-top:2px;}
+.dingyuebox{ width:30%; float:right;}
+.lijidingyue{ width:100%; height:79px;color:#FFF; font-size:22px; text-align:center; line-height:77px; background:#dc1570;  }
+.denglu{width:100%; height:64px; color:#FFF; font-size:26px; border-radius:8px 8px 8px 8px; margin:auto; margin-top:37px; text-align:center; line-height:67px; background:#dc1570; }
+form{  width:50%;}
+.dingyuer{ float:right;}
+
+
+
+.chanpinbox{position:relative;width:100%;}
+.left{ position:absolute;left:0;margin:0;z-index:9;top:40%;}
+.right{position:absolute;right:0;margin:0;top:40%;}
+.chanpin{width:100%;}
+.bantou{width:100%;}
+.chanpin a img{width:100%;}
+.tuijian{width:20%;}
+.yue{width:40%;}
+
+
+</style>
+<script type="text/javascript">
+		$(window).load(function() {
+			$('.chanpinbox').flexslider();
+		});
+</script>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div class="chanpinbox">
+    <a href="1-chanpinye-index.html"><img class="left" src="images/1-chanpin-zuo.png"></a>
+    
+    <div class="chanpin">
+        <img class="tuijian" src="images/1-chanpin-tuijian.png">
+        <a href="#"><img class="tupian" src="images/1-chanpin-tupian.png"></a>
+        <a href="#"><div class="bantou">SwissVita薇佳微晶3D全能精华1.5ml</div></a>
+    </div>
+    
+    <a href="1-chanpinye-index2"><img  class="right" src="images/1-chanpin-you.png"></a>
+
+</div>
+
+<a href="#" class="jianjie">抗老化、抗皱、Q弹、锁水保湿、嫩白肌肤、维持肌肤健康保护力
+</a>
+
+<div class="jiage">
+    <p class="now">当前价：￥45</p>
+    <div class="vip">
+        <span>￥3</span>
+        <p>高级订阅会员价，</p>
+        <a href="#">立即升级</a>
+    </div>
+</div>
+
+<div class="dingyue">
+    
+        <form class="numl">
+            <input class="num" type="number" value="1">
+        </form>
+       <!-- <a href="#">
+            <img src="images/1-chanpin-jian.png">
+        </a>
+        <p class="num">1</p>
+        <a href="#">
+            <img src="images/1-chanpin-jia.png">
+        </a>-->
+    
+    <form class="dingyuer" action="＃">
+  <input class="denglu" type="submit" value="立即订阅">
+  </form>
+    <!--/*<a class="anniu" href="#">
+        <img src="images/1-chanpin-dingyue.png">
+    </a>
+*/-->
+</div>
+
+<div class="jiesuan">
+    <p class="yue">账户余额：￥300</p>
+    <a href="#" class="shuaxin">
+        <img src="images/1-chanpin-shuaxin.png">
+    </a>
+    
+     <form class="dingyuebox" action="#">
+              <input type="submit" value="结算"  class="lijidingyue">
+        </form>
+</div>
+
+</body>
+</html>
