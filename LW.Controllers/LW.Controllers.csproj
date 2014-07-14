@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminSite\AccountController.cs" />
+    <Compile Include="AdminSite\ManagerController.cs" />
     <Compile Include="AdminSite\CategoryController.cs" />
     <Compile Include="AdminSite\Filters\ExceptionFilter.cs" />
     <Compile Include="AdminSite\Filters\FormsAuthorizeAttribute.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="AdminSite\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceController.cs" />
-    <Compile Include="WebSite\AccountController.cs" />
+    <Compile Include="WebSite\UserController.cs" />
     <Compile Include="WebSite\HomeController.cs" />
   </ItemGroup>
   <ItemGroup>

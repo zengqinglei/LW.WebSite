@@ -24,8 +24,10 @@ namespace LW.WebSite
                         "~/Scripts/jquery-easyui/jquery.easyui-ext.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/common").Include(
                         "~/Scripts/Admin/common.js"));
-            bundles.Add(new ScriptBundle("~/bundles/admin/account-login").Include(
-                        "~/Scripts/Admin/account.login.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/manager-login").Include(
+                        "~/Scripts/Admin/manager.login.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/manager-resetpassword").Include(
+                        "~/Scripts/Admin/manager.resetpassword.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/home-index").Include(
                         "~/Scripts/Admin/home.index.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/user-list").Include(
@@ -56,7 +58,8 @@ namespace LW.WebSite
             bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/icon").Include(
                         "~/Content/jquery-easyui/themes/icon.css",
                         "~/Content/jquery-easyui/themes/icon-ext.css"));
-            bundles.Add(new StyleBundle("~/Content/admin/account-login").Include("~/Content/admin/account.login.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/manager-login").Include("~/Content/admin/manager.login.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/manager-resetpassword").Include("~/Content/admin/manager.resetpassword.css"));
             bundles.Add(new StyleBundle("~/Content/admin/home-index").Include("~/Content/admin/home.index.css"));
             #endregion
 

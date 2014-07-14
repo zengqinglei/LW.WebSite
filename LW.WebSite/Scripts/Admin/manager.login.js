@@ -42,11 +42,7 @@ $(function () {
                     validType: 'length[6,12]',
                     invalidMessage: '格式有误，请输入6~12位字符'
                 });
-                self.controls.frmLogin_txtValidcode.focus(function () {
-                    self.controls.frmLogin_txtValidcode.validatebox("disableValidation");
-                }).blur(function () {
-                    self.controls.frmLogin_txtValidcode.validatebox("enableValidation");
-                }).validatebox({
+                self.controls.frmLogin_txtValidcode.validatebox({
                     required: true,
                     missingMessage: '请输入4位验证码',
                     validType: 'length[4,4]',
@@ -95,5 +91,5 @@ $(function () {
         refreshValidCode(self.controls.frmLogin_imgValidcode);
     }
 
-    new Page("account-login");
+    new Page("manager-login");
 });

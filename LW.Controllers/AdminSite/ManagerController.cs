@@ -14,7 +14,7 @@ using LW.Controllers.AdminSite.Filters;
 
 namespace LW.Controllers.AdminSite
 {
-    public class AccountController : Controller
+    public class ManagerController : Controller
     {
         #region 账户管理--登录
         [HttpGet]
@@ -70,6 +70,12 @@ namespace LW.Controllers.AdminSite
         #endregion
 
         #region 账户管理--重置密码
+        [HttpGet]
+        [FormsAuthorize]
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
         [HttpPost]
         [FormsAuthorize]
         [ValidateAntiForgeryToken]

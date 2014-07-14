@@ -1,0 +1,32 @@
+﻿/*登录窗体样式*/
+.dialog-manager-login table {
+    margin: 20px;
+}
+
+.dialog-manager-login table tr {
+    height: 40px;
+}
+
+.dialog-manager-login .editor-label {
+}
+.dialog-manager-login .editor-field * {
+    height:22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.dialog-manager-login .editor-field .text-account, .text-password {
+    padding-left:3px;
+    padding-right:3px;
+    width: 250px;
+}
+
+.dialog-manager-login .editor-field .text-validcode {
+    padding-left:3px;
+    padding-right:3px;
+    width: 100px;
+}
+
+.dialog-manager-login .editor-field .a-refreshvalidcode {
+    height: 20px;
+    line-height: 20px;
+}

@@ -26,7 +26,7 @@ namespace LW.Controllers.AdminSite.Filters
                         {
                             Data = new
                             {
-                                url = new UrlHelper(filterContext.RequestContext).Action("_login", "account"),
+                                url = new UrlHelper(filterContext.RequestContext).Action("_login", "manager"),
                                 backurl = filterContext.HttpContext.Request.RawUrl
                             },
                             JsonRequestBehavior = JsonRequestBehavior.AllowGet
@@ -39,7 +39,7 @@ namespace LW.Controllers.AdminSite.Filters
                     {
                         filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                         {
-                            controller = "account",
+                            controller = "manager",
                             action = "login",
                             backurl = filterContext.HttpContext.Request.RawUrl
                         }));

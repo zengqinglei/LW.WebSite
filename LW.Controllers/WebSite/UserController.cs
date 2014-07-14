@@ -10,7 +10,7 @@ using LW.ViewModels;
 
 namespace LW.Controllers.WebSite
 {
-    public class AccountController : Controller
+    public class UserController : Controller
     {
         #region 客户账户--登录
         [HttpGet]

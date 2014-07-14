@@ -1,8 +1,8 @@
 ﻿@{
     Layout = null;
 }
-<div class="dialog-account-login">
-    @using (Html.BeginForm("login", "account", new { backurl = Request["backurl"] }, FormMethod.Post))
+<div class="dialog-manager-login">
+    @using (Html.BeginForm("Login", "Manager", new { backurl = Request["backurl"] }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <table cellpadding="0" cellspacing="0" border="0">
@@ -24,6 +24,6 @@
             </tr>
         </table>
     }
-    @Styles.Render("~/Content/admin/account-login")
-    @Scripts.Render("~/bundles/admin/account-login")
+    @Styles.Render("~/Content/admin/manager-login")
+    @Scripts.Render("~/bundles/admin/manager-login")
 </div>

@@ -9,12 +9,7 @@ $(function () {
             btnLogout: $(".layout-" + selector + ' .a-logout'),
             navList: $(".layout-" + selector + ' .nav-list'),
             tabList: $(".layout-" + selector + ' .tab-list'),
-            tabMenu: $('.tab-menu'),
-            dlgResetpw: $('.dialog-resetpw'),
-            frmResetpw: $('.dialog-resetpw form'),
-            frmResetpw_txtOldpassword: $('.dialog-resetpw [name="OldPassword"]'),
-            frmResetpw_txtNewpassword: $('.dialog-resetpw [name="NewPassword"]'),
-            frmResetpw_txtConfirmpassword: $('.dialog-resetpw [name="ConfirmPassword"]')
+            tabMenu: $('.tab-menu')
         }
 
         this.init();
@@ -29,38 +24,30 @@ $(function () {
     Page.prototype.initResetpw = function () {
         var self = this;
 
-        self.controls.dlgResetpw.show().dialog({
+        var dlgResetpw = $('<div></div>').dialog({
             title: '管理员密码修改',
-            width: 400,
-            modal: true,
             iconCls: "icon-01-12",
-            buttons: [{
-                text: "确定",
-                iconCls: "icon-ok",
-                handler: function () { self.onResetPW(); }
-            }, {
-                text: "取消",
-                iconCls: "icon-cancel",
-                handler: function () { self.controls.dlgResetpw.dialog("close"); }
-            }],
-            onOpen: function () {
-                self.controls.frmResetpw_txtOldpassword.validatebox({
-                    required: true,
-                    missingMessage: '请输入旧密码'
-                });
-                self.controls.frmResetpw_txtNewpassword.validatebox({
-                    required: true,
-                    missingMessage: '请输入新密码'
-                });
-                self.controls.frmResetpw_txtConfirmpassword.validatebox({
-                    required: true,
-                    missingMessage: '请再次输入新密码',
-                    validType: "equals['" + self.controls.frmResetpw_txtNewpassword.selector + "']",
-                    invalidMessage: '两次新密码输入不一致'
-                });
-                self.controls.frmResetpw.form("disableValidation");
-            },
-            onClose: function () { self.controls.frmResetpw.form("reset").form("disableValidation"); }
+            href: '/admin/manager/resetpassword',
+            width: 400,
+            top: 100,
+            modal: true,
+            buttons: [
+                {
+                    iconCls: "icon-ok",
+                    text: "保存",
+                    handler: function () {
+                        LW.ManagerResetpw.onSubmit(function (data) {
+                            if (data.status == 1) {
+                                dlgResetpw.dialog("close");
+                                showMsg({ msg: data.msg, icon: "success" });
+                            } else {
+                                showMsg({ msg: data.msg, icon: "error" });
+                            }
+                        });
+                    }
+                }
+            ],
+            onClose: function () { $(this).dialog("destroy"); }
         });
     }
     Page.prototype.onLogout = function () {
@@ -68,22 +55,7 @@ $(function () {
 
         $.messager.confirm("系统提示！", "您确定要退出本次登录吗？", function (r) {
             if (!r) return false;
-            location.href = "/admin/account/logout";
-        });
-    }
-    Page.prototype.onResetPW = function () {
-        var self = this;
-
-        self.controls.frmResetpw.form("enableValidation").form('submit', {
-            success: function (data) {
-                var json = jQuery.parseJSON(data);
-                if (json.status == 1) {
-                    showMsg({ msg: json.msg, icon: "success" });
-                    self.controls.dlgResetpw.dialog('close');
-                } else {
-                    showMsg({ msg: json.msg, icon: "error" });
-                }
-            }
+            location.href = "/admin/manager/logout";
         });
     }
     Page.prototype.initNavList = function () {

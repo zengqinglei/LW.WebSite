@@ -51,26 +51,3 @@
     background-color: #fbfbfb;
     border-top: 1px solid #D4D4D4;
 }
-
-.dialog-resetpw table {
-    margin: 20px;
-}
-
-    .dialog-resetpw table tr {
-        height: 40px;
-    }
-
-.dialog-resetpw .editor-label {
-}
-
-.dialog-resetpw .editor-field * {
-    height: 25px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.dialog-resetpw .editor-field input {
-    padding-left: 3px;
-    padding-right: 3px;
-    width: 250px;
-}

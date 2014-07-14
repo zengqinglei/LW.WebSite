@@ -207,7 +207,8 @@
   <ItemGroup>
     <Content Include="App_Data\mysqlconfig.txt" />
     <Content Include="App_Data\update.sql" />
-    <Content Include="Content\Admin\account.login.css" />
+    <Content Include="Content\Admin\manager.resetpassword.css" />
+    <Content Include="Content\Admin\manager.login.css" />
     <Content Include="Content\Admin\Site.css" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\folder-close.png" />
     <Content Include="Content\jquery-easyui\themes\icon-ext\16x16\folder-open.png" />
@@ -591,6 +592,7 @@
     <Content Include="Documents\需求\罗莉盒微信\luoliheshouji\__MACOSX\luoliheshouji\wodedingyueyemian\images\._zuoyou.png" />
     <Content Include="Scripts\Admin\category.list.js" />
     <Content Include="Scripts\Admin\box.list.js" />
+    <Content Include="Scripts\Admin\manager.resetpassword.js" />
     <Content Include="Scripts\Admin\user.save.js" />
     <Content Include="Scripts\Admin\user.list.js" />
     <Content Include="Scripts\Admin\common.js" />
@@ -921,13 +923,13 @@
     <Content Include="Documents\需求\罗莉盒微信\罗莉盒微信\微信页面\红包活动页面\9-如何扫描.psd" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Scripts\Admin\account.login.js" />
+    <Content Include="Scripts\Admin\manager.login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Manager\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\Admin\home.index.js" />
@@ -937,7 +939,7 @@
     <Content Include="Areas\Admin\Views\User\List.cshtml" />
     <Content Include="Areas\Admin\Views\User\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\User\Save.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\_Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Manager\_Login.cshtml" />
     <Content Include="Areas\Admin\Views\Category\List.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Box\List.cshtml" />
@@ -957,6 +959,8 @@
     <Content Include="Documents\需求\罗莉盒微信\luoliheshouji\__MACOSX\luoliheshouji\wodedingyueyemian\images\._.DS_Store" />
     <Content Include="Documents\需求\罗莉盒微信\luoliheshouji\__MACOSX\luoliheshouji\wodedingyueyemian\images\demo-stuff\._.DS_Store" />
     <Content Include="Documents\需求\罗莉盒微信\luoliheshouji\__MACOSX\luoliheshouji\wodedingyueyemian\images\theme\._.DS_Store" />
+    <Content Include="Areas\Admin\Views\Manager\ResetPassword.cshtml" />
+    <None Include="Properties\PublishProfiles\LW.WebSite.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
@@ -1268,7 +1272,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
