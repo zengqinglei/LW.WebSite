@@ -10,9 +10,9 @@
     <meta name="description" content="@Model.Description" />
     <title>@Model.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    @Styles.Render("~/Content/bootstrap", "~/Content/css")
+    @Styles.Render("~/Content/bootstrap/css", "~/Content/css")
     @RenderSection("Styles", false)
-    @Scripts.Render("~/bundles/jquery","~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryval", "~/bundles/bootstrap", "~/bundles/common")
     @RenderSection("Scripts", false)
 </head>
 <body>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 #region 命名空间
 using System.Web.Mvc;
 using LW.ViewModels;
+using LW.Controllers.WebSite.Filters;
 #endregion
 
 namespace LW.Controllers.WebSite
@@ -14,6 +15,7 @@ namespace LW.Controllers.WebSite
     {
         #region 主页--视图
         [HttpGet]
+        [FormsAuthorize]
         public ActionResult Index()
         {
             return View(new VM_Base());

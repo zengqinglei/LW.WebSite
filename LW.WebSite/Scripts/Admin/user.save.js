@@ -20,7 +20,7 @@ $(function () {
             required: true,
             missingMessage: '请填写客户昵称！',
             validType: isAdd ? {
-                remote: ['/service/existnickname', 'nickname']
+                remote: ['/service/existaccount', 'nickname']
             } : null,
             invalidMessage: '该昵称已存在！'
         });

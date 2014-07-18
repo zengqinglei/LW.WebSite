@@ -10,18 +10,23 @@ namespace LW.WebSite
         {
             #region 绑定脚本
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jqueryval/jquery.unobtrusive*",
+                        "~/Scripts/jqueryval/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap.js"));
+                        "~/Scripts/bootstrap/bootstrap.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-easyui").Include(
                         "~/Scripts/jquery-easyui/jquery.easyui.js",
                         "~/Scripts/jquery-easyui/locale/easyui-lang-zh_CN.js",
                         "~/Scripts/jquery-easyui/jquery.easyui-ext.js"));
+            // 绑定前台脚本
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                        "~/Scripts/common.js"));
+
+            // 绑定后台脚本
             bundles.Add(new ScriptBundle("~/bundles/admin/common").Include(
                         "~/Scripts/Admin/common.js"));
             bundles.Add(new ScriptBundle("~/bundles/admin/manager-login").Include(
@@ -41,10 +46,13 @@ namespace LW.WebSite
             #endregion
 
             #region 绑定样式
+            bundles.Add(new StyleBundle("~/Content/bootstrap/css").Include("~/Content/bootstrap/bootstrap.css"));
+
+            //绑定前台样式
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            // 绑定后台样式
             bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Content/Admin/site.css"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/black/easyui").Include(
                         "~/Content/jquery-easyui/themes/black/easyui.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-easyui/themes/bootstrap/easyui").Include(

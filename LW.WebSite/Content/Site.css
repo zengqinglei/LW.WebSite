@@ -1,37 +1,33 @@
 ﻿/* account>login */
-.form-signin {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+.header {
+    margin-top: 30px;
+    width: 320px;
+    height: 50px;
+    background: transparent url(/Images/login.png) no-repeat;
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
+
+.form-login,
+.form-register {
+    padding: 40px 15px;
+    width: 250px;
+    margin: 0 auto;
 }
-.form-signin .checkbox {
-  font-weight: normal;
+.form-register .txt-validcode {
+    width: 120px;
+}.form-register .img-validcode {
+     margin-left:5px;
+    width: 60px;
+    height:34px;
 }
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
+.form-register .btn-refresh-validcode
+{
+    margin-left:5px;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+
+
+.footer {
+    margin-top: 30px;
+    width: 320px;
+    height: 119px;
+    background: transparent url(/Images/footer.png) no-repeat;
 }

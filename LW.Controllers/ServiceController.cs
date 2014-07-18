@@ -17,39 +17,23 @@ namespace LW.Controllers
         [HttpGet]
         public ActionResult GetValidCode(string sessionKey)
         {
-            int number;
-            char code;
-            string StrCode = String.Empty;
+            var validCode = Util.GetRandomAlphanumeric();
 
-            Random random = new Random();
-            for (int i = 0; i < 4; i++)
-            {
-                number = random.Next();
+            byte[] image = ImageHelper.MakeValidateGraphic(validCode);
 
-                if (number % 2 == 0)
-                {
-                    code = (char)('0' + (char)(number % 10));
-                }
-                else
-                {
-                    code = (char)('A' + (char)(number % 26));
-                }
-                StrCode += code.ToString();
-            }
-
-            byte[] image = ImageHelper.MakeValidateGraphic(StrCode);
-
-            B_Service.AddValidCode(StrCode);
+            B_Service.AddValidCode(validCode);
 
             return File(image, "image/jpeg");
         }
         #endregion
 
-        #region 公共服务--if exists nickname
-        [HttpPost]
-        public ActionResult ExistNickname(string nickname)
+        #region 公共服务--if exists nickname,email
+        [HttpGet]
+        public ActionResult ExistAccount(string nickname = null, string usermail = null)
         {
-            return Json(!new B_User().ExistNickname(nickname));
+            var flag = !new B_User().ExistNickname(nickname: nickname, usermail: usermail);
+
+            return Json(flag, JsonRequestBehavior.AllowGet);
         }
         #endregion
     }

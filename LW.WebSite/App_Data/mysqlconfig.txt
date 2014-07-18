@@ -2,3 +2,14 @@ adminurl:http://www.lolitabox.com/dbadmin/
 server:42.121.84.129
 username:lolitabox_baby
 password:baby121314
+
+ftp dir:/data/lolitabox/www_baby
+ftp server:42.121.84.129
+ftp username:root
+ftp password:box_1206
+
+admin url:http://baby.lolitabox.com/admin
+admin username:admin
+admin password:admin
+
+web url:http://baby.lolitabox.com
